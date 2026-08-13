@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f0efec"/>
+  <rect x="80" y="80" width="56" height="56" rx="14" fill="#131312"/>
+  <text x="108" y="118" font-family="'Space Grotesk', Arial, sans-serif" font-weight="600" font-size="22" text-anchor="middle" fill="#f0efec">IM</text>
+  <text x="80" y="300" font-family="'Space Grotesk', Arial, sans-serif" font-weight="300" font-size="64" fill="#131312">Immanuel Justice</text>
+  <text x="80" y="378" font-family="'Space Grotesk', Arial, sans-serif" font-weight="400" font-size="72" fill="#131312">Mac-Arthur</text>
+  <line x1="80" y1="432" x2="136" y2="432" stroke="#131312" stroke-opacity="0.45"/>
+  <text x="80" y="482" font-family="Inter, Arial, sans-serif" font-weight="500" font-size="26" fill="#56554f">Software Engineer · Full-Stack Developer · Fintech</text>
+  <text x="80" y="524" font-family="Inter, Arial, sans-serif" font-size="22" fill="#6c6b64">Cross-border payments &amp; agent banking across Africa</text>
+</svg>
