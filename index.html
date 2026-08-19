@@ -7,7 +7,7 @@
   <meta name="description" content="Immanuel Justice Mac-Arthur is a full-stack software engineer specializing in secure, high-availability fintech platforms — cross-border payment integrations and agent-banking systems for banks and microfinance institutions across Africa." />
   <meta name="author" content="Immanuel Justice Mac-Arthur" />
   <meta name="keywords" content="Immanuel Mac-Arthur, Software Engineer, Full-Stack Developer, Fintech, .NET, C#, Angular, PAPSS, Accra Ghana" />
-  <meta name="theme-color" content="#f0efec" />
+  <meta name="theme-color" content="#ffffff" />
   <meta name="color-scheme" content="light" />
 
   <!-- Open Graph -->
@@ -79,12 +79,6 @@
         <span class="logo-text">Mac-Arthur</span>
       </a>
 
-      <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-        <span class="nav-toggle-bar"></span>
-      </button>
-
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -92,8 +86,22 @@
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#education" class="nav-link">Education</a></li>
         <li><a href="#achievements" class="nav-link">Achievements</a></li>
-        <li><a href="#contact" class="nav-link nav-link--cta">Contact</a></li>
       </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="nav-link nav-link--cta">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+          </svg>
+          Contact
+        </a>
+
+        <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+      </div>
     </nav>
   </header>
 
@@ -101,70 +109,65 @@
 
     <!-- ===== Hero ===== -->
     <section class="hero" id="hero" aria-label="Introduction">
-      <div class="hero-backdrop" aria-hidden="true">
-        <div class="hero-glow"></div>
-      </div>
-
       <div class="hero-inner">
-        <div class="hero-copy">
-          <p class="hero-eyebrow reveal" data-reveal="fade-up">Software Engineer · Full-Stack Developer · Fintech</p>
+        <div class="hero-card">
 
-          <h1 class="hero-wordmark reveal" data-reveal="fade-up" data-reveal-delay="80">
-            <span class="hero-wordmark-sub">Immanuel Justice</span>
-            <span class="hero-wordmark-main">Mac-Arthur</span>
-          </h1>
+        
 
-          <div class="hero-rule reveal" data-reveal="fade-up" data-reveal-delay="140" aria-hidden="true"></div>
+          <div class="hero-copy">
+            <p class="hero-eyebrow reveal" data-reveal="fade-up">
+              Hey <span class="hero-wave" aria-hidden="true">👋</span> I'm Immanuel
+            </p>
 
-          <p class="hero-tagline reveal" data-reveal="fade-up" data-reveal-delay="160">
-            I build secure, high-availability fintech platforms — from cross-border
-            payment rails to agent-banking systems — trusted by banks and
-            microfinance institutions across Africa.
-          </p>
+            <h1 class="hero-heading reveal" data-reveal="fade-up" data-reveal-delay="80">
+              Software Engineer &amp;<br />Full-Stack Developer
+            </h1>
 
-          <div class="hero-actions reveal" data-reveal="fade-up" data-reveal-delay="220">
-            <a href="#projects" class="btn btn-primary btn-ripple">
+            <a href="#projects" class="btn btn-lime btn-ripple reveal" data-reveal="fade-up" data-reveal-delay="160">
               <span>View Projects</span>
-            </a>
-            <a href="assets/Immanuel-Mac-Arthur-CV.pdf" class="btn btn-secondary btn-ripple" download>
-              <span>Download CV</span>
-            </a>
-            <a href="#contact" class="btn btn-ghost btn-ripple">
-              <span>Get in Touch</span>
             </a>
           </div>
 
-          <dl class="hero-stats reveal" data-reveal="fade-up" data-reveal-delay="280">
-            <div class="hero-stat">
-              <dt>Markets shipped to</dt>
-              <dd>5 African countries</dd>
-            </div>
-            <div class="hero-stat">
-              <dt>Focus</dt>
-              <dd>Cross-border payments &amp; agent banking</dd>
-            </div>
-            <div class="hero-stat">
-              <dt>Core stack</dt>
-              <dd>C# / .NET · Angular · MS SQL Server</dd>
-            </div>
-          </dl>
+          <figure class="hero-portrait">
+            <img
+              src="assets/im.png"
+              width="3435" height="5153"
+              alt="Portrait of Immanuel Justice Mac-Arthur"
+              decoding="async"
+              fetchpriority="high"
+            />
+          </figure>
+
+          <div class="hero-bottom">
+            <p class="hero-blurb reveal" data-reveal="fade-up" data-reveal-delay="220">
+              Full-stack software engineer based in Accra, Ghana — building secure,
+              high-availability fintech platforms for banks and microfinance
+              institutions across Africa.
+            </p>
+
+            <dl class="hero-stats reveal" data-reveal="fade-up" data-reveal-delay="280">
+              <div class="hero-stat">
+                <dt>6+</dt>
+                <dd>African countries shipped to</dd>
+              </div>
+              <div class="hero-stat">
+                <dt>2+</dt>
+                <dd>Years in production fintech</dd>
+              </div>
+              <div class="hero-stat">
+                <dt>6+</dt>
+                <dd>Production platforms delivered</dd>
+              </div>
+            </dl>
+          </div>
+
         </div>
 
-        <figure class="hero-figure">
-          <img
-            src="assets/im.png"
-            width="3435" height="5153"
-            alt="Portrait of Immanuel Justice Mac-Arthur"
-            decoding="async"
-            fetchpriority="high"
-          />
-        </figure>
+        <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
+          <span class="scroll-cue-dot" aria-hidden="true"></span>
+          <span>Scroll down</span>
+        </a>
       </div>
-
-      <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
-        <span class="scroll-cue-dot" aria-hidden="true"></span>
-        <span>Scroll down</span>
-      </a>
     </section>
 
     <!-- ===== About ===== -->
@@ -537,7 +540,7 @@
           </div>
 
           <div class="contact-actions">
-            <a href="mailto:macarthur83@yahoo.com" class="btn btn-primary btn-ripple"><span>Say Hello</span></a>
+            <a href="mailto:macarthur83@yahoo.com" class="btn btn-lime btn-ripple"><span>Say Hello</span></a>
             <a href="assets/Immanuel-Mac-Arthur-CV.pdf" class="btn btn-secondary btn-ripple" download><span>Download CV</span></a>
           </div>
         </div>

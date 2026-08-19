@@ -5,34 +5,44 @@
 
 /* ---------- 1. Design tokens ---------- */
 :root {
-  /* Colors — warm off-white editorial base, monochrome ink accent system */
-  --color-bg: #f0efec;
-  --color-bg-alt: #e7e6e2;
-  --color-surface: rgba(19, 19, 18, 0.028);
-  --color-surface-strong: rgba(19, 19, 18, 0.055);
-  --color-border: rgba(19, 19, 18, 0.13);
-  --color-border-strong: rgba(19, 19, 18, 0.26);
-  --color-text: #131312;
-  --color-text-dim: #56554f;
+  /* Colors — white editorial base with a black hero and a lime signal accent. */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4f4f2;
+  --color-surface: rgba(13, 13, 13, 0.03);
+  --color-surface-strong: rgba(13, 13, 13, 0.06);
+  --color-border: rgba(13, 13, 13, 0.12);
+  --color-border-strong: rgba(13, 13, 13, 0.24);
+  --color-text: #0d0d0d;
+  --color-text-dim: #5c5c5c;
   --color-text-white: #ffffff;
-  --color-text-faint: #6c6b64;
+  --color-text-faint: #838383;
 
-  /* Ink accent system. The palette is deliberately monochrome — the page
-     carries no hue, so the portrait is the only tonal event on the screen. */
+  /* Ink accent system — near-black, used for secondary buttons, focus rings,
+     bullet marks and the logo mark. */
   --accent-deep: #000000;
-  --accent: #131312;
-  --accent-bright: #3d3c38;
-  --accent-glow: rgba(19, 19, 18, 0.16);
-  --accent-gradient: linear-gradient(135deg, #131312, #4a4944);
-  --accent-gradient-soft: linear-gradient(135deg, rgba(19, 19, 18, 0.09), rgba(19, 19, 18, 0.04));
+  --accent: #0d0d0d;
+  --accent-bright: #2b2b2b;
+  --accent-glow: rgba(13, 13, 13, 0.16);
+  --accent-gradient: linear-gradient(135deg, #0d0d0d, #2b2b2b);
+  --accent-gradient-soft: linear-gradient(135deg, rgba(13, 13, 13, 0.08), rgba(13, 13, 13, 0.03));
 
-  /* Signal accent — a single restrained brass/gold used only for links,
-     hover states, and highlight moments (section labels, timeline dots,
-     achievement numbers). Everything else stays monochrome ink. */
-  --accent-signal: #8a5a17;
-  --accent-signal-bright: #b07c24;
-  --accent-signal-soft: rgba(138, 90, 23, 0.14);
-  --accent-signal-gradient: linear-gradient(135deg, #8a5a17, #b07c24);
+  /* Signal accent — a text-safe olive-lime used for kickers, links, timeline
+     dots and achievement numbers, plus the vivid fill version used on solid
+     pills and buttons (always paired with near-black text for contrast). */
+  --accent-signal: #5a6b15;
+  --accent-signal-bright: #71861b;
+  --accent-signal-soft: rgba(90, 107, 21, 0.12);
+  --accent-signal-gradient: linear-gradient(135deg, #5a6b15, #71861b);
+  --accent-lime: #d6f24a;
+  --accent-lime-bright: #c2df3a;
+  --accent-lime-soft: rgba(214, 242, 74, 0.16);
+
+  /* Hero surface — a dedicated black card, independent of the white page bg. */
+  --hero-bg: #0d0d0d;
+  --hero-bg-alt: #1a1a1d;
+  --hero-border: rgba(255, 255, 255, 0.12);
+  --hero-text-dim: rgba(255, 255, 255, 0.55);
+  --hero-text-faint: rgba(255, 255, 255, 0.38);
 
   /* Typography */
   --font-display: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -65,7 +75,7 @@
   --header-height: 76px;
 
   /* Shadows */
-  --shadow-soft: 0 20px 60px -22px rgba(19, 19, 18, 0.18);
+  --shadow-soft: 0 20px 60px -22px rgba(13, 13, 13, 0.18);
   --shadow-lift: 0 30px 80px -24px var(--accent-glow);
 }
 
@@ -150,7 +160,7 @@ button:focus-visible,
   inset: 0;
   z-index: -1;
   overflow: hidden;
-  background: radial-gradient(ellipse at 50% -10%, #f7f6f4 0%, var(--color-bg) 55%);
+  background: radial-gradient(ellipse at 50% -10%, #fbfbfa 0%, var(--color-bg) 55%);
 }
 
 /* Ink particles on a light ground read as dust if they carry any weight —
@@ -212,8 +222,8 @@ button:focus-visible,
   position: absolute;
   inset: 0;
   background-image:
-    linear-gradient(rgba(19, 19, 18, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(19, 19, 18, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(13, 13, 13, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13, 13, 13, 0.035) 1px, transparent 1px);
   background-size: 64px 64px;
   -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, #000 40%, transparent 90%);
   mask-image: radial-gradient(ellipse 70% 50% at 50% 0%, #000 40%, transparent 90%);
@@ -229,15 +239,14 @@ button:focus-visible,
   height: var(--header-height);
   display: flex;
   align-items: center;
-  transition: background var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out), backdrop-filter var(--dur-med) var(--ease-out);
+  background: var(--color-bg);
   border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out);
 }
 
 .site-header.is-scrolled {
-  background: rgba(240, 239, 236, 0.82);
-  -webkit-backdrop-filter: blur(18px) saturate(140%);
-  backdrop-filter: blur(18px) saturate(140%);
   border-bottom-color: var(--color-border);
+  box-shadow: 0 16px 32px -26px rgba(13, 13, 13, 0.4);
 }
 
 .nav-bar {
@@ -274,67 +283,58 @@ button:focus-visible,
 
 .logo-text {
   color: var(--color-text);
-  transition: color var(--dur-fast) var(--ease-out);
 }
-.site-header.is-scrolled .logo-text { color: var(--color-text); }
 
 .nav-menu {
   display: flex;
   align-items: center;
-  gap: var(--space-lg);
+  gap: 0.3rem;
 }
 
 .nav-link {
   position: relative;
   font-size: 0.92rem;
   color: var(--color-text-dim);
-  transition: color var(--dur-fast) var(--ease-out);
-}
-
-.site-header.is-scrolled .nav-link { color: var(--color-text-dim); }
-/* The rule above out-specifies .nav-link--cta, which would dim the CTA's
-   label against its own ink fill once the header is scrolled. */
-.site-header.is-scrolled .nav-link--cta { color: var(--color-text-white); }
-
-.nav-link::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -6px;
-  width: 100%;
-  height: 1px;
-  background: var(--accent-signal);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform var(--dur-fast) var(--ease-out);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-pill);
+  transition: color var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
 }
 
 .nav-link:hover,
-.nav-link:focus-visible,
-.nav-link.is-active,
-.site-header.is-scrolled .nav-link:hover,
-.site-header.is-scrolled .nav-link:focus-visible,
-.site-header.is-scrolled .nav-link.is-active {
-  color: var(--accent-signal);
-}
-.nav-link:hover::after,
-.nav-link:focus-visible::after,
-.nav-link.is-active::after {
-  transform: scaleX(1);
+.nav-link:focus-visible {
+  color: var(--color-text);
+  background: var(--color-surface);
 }
 
-.nav-link--cta {
-  padding: 0.5rem 1.1rem;
-  border-radius: var(--radius-pill);
-  border: 1px solid var(--accent-deep);
-  color: #fff;
-  background: var(--accent-deep);
+.nav-link.is-active {
+  color: #10130a;
+  background: var(--accent-lime);
+  font-weight: 600;
 }
-.nav-link--cta::after { display: none; }
-.nav-link--cta:hover {
-  background: var(--accent-bright);
-  border-color: var(--accent-bright);
-  box-shadow: 0 8px 24px -8px var(--accent-glow);
+.nav-link.is-active:hover { background: var(--accent-lime-bright); }
+
+.nav-link--cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: var(--space-sm);
+  padding: 0.55rem 1.15rem;
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+.nav-link--cta:hover,
+.nav-link--cta:focus-visible {
+  background: var(--color-bg);
+  border-color: var(--accent-lime-bright);
+  box-shadow: 0 8px 24px -14px var(--accent-glow);
+}
+.nav-link--cta svg { flex: none; }
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 .nav-toggle {
@@ -354,7 +354,6 @@ button:focus-visible,
   margin: 0 auto;
   transition: transform var(--dur-fast) var(--ease-out), opacity var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out);
 }
-.site-header.is-scrolled .nav-toggle-bar { background: var(--color-text); }
 
 /* ---------- 6. Buttons ---------- */
 .btn {
@@ -377,11 +376,22 @@ button:focus-visible,
 .btn-primary {
   color: var(--color-text-white);
   background: var(--accent-gradient);
-  box-shadow: 0 10px 30px -12px rgba(19, 19, 18, 0.45);
+  box-shadow: 0 10px 30px -12px rgba(13, 13, 13, 0.45);
 }
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 18px 44px -14px rgba(19, 19, 18, 0.5);
+  box-shadow: 0 18px 44px -14px rgba(13, 13, 13, 0.5);
+}
+
+.btn-lime {
+  color: #10130a;
+  background: var(--accent-lime);
+  box-shadow: 0 10px 30px -12px rgba(214, 242, 74, 0.55);
+}
+.btn-lime:hover {
+  transform: translateY(-2px);
+  background: var(--accent-lime-bright);
+  box-shadow: 0 18px 44px -14px rgba(214, 242, 74, 0.6);
 }
 
 .btn-secondary {
@@ -437,159 +447,141 @@ button:focus-visible,
   transition: transform var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out), background var(--dur-med) var(--ease-out);
 }
 [data-tilt]:hover {
-  border-color: rgba(138, 90, 23, 0.4);
+  border-color: rgba(90, 107, 21, 0.4);
   background: var(--color-surface-strong);
   box-shadow: var(--shadow-lift);
 }
 
 /* ---------- 8. Hero ---------- */
-/* Asymmetric editorial split: copy on the left, portrait anchored to the
-   bottom-right and running off the edge of the section. The cutout has hard
-   edges, so the frame boundary — not a fade — is what ends the image. */
+/* A single black rounded card floats on the white page. It has no overflow
+   clipping of its own — the portrait and the floating stack widget are free
+   to bleed past its top and bottom edges, which is what makes them read as
+   objects placed on top of the card rather than contents trapped inside it. */
 .hero {
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
   padding: calc(var(--header-height) + var(--space-lg)) var(--space-md) var(--space-2xl);
-  overflow: hidden;
   background: var(--color-bg);
 }
 
-.hero-backdrop {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* A single soft tonal pool keeps the portrait from floating on flat paper. */
-.hero-glow {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: min(62%, 820px);
-  height: 82%;
-  background: radial-gradient(ellipse at 62% 78%, rgba(19, 19, 18, 0.09) 0%, transparent 68%);
-  filter: blur(30px);
-}
-
+/* Unlike .section-inner elsewhere, the hero card is meant to run the full
+   width of the viewport on large screens rather than sit in a centred
+   1180px column — only the section's own side padding gutters it. */
 .hero-inner {
-  /* Deliberately unpositioned: the portrait anchors to the section itself,
-     not to this padded container, so it can reach the section floor. */
-  position: static;
-  max-width: var(--max-width);
+  max-width: none;
   margin: 0 auto;
-  width: 100%;
 }
 
+.hero-card {
+  position: relative;
+  background: var(--hero-bg);
+  border-radius: clamp(24px, 3vw, 40px);
+  min-height: clamp(560px, 56vw, 680px);
+  padding: clamp(28px, 3.4vw, 48px);
+}
+
+/* --- Floating "core stack" widget, pinned to the card's top-right corner --- */
+.hero-widget {
+  position: absolute;
+  top: -22px;
+  right: clamp(20px, 4vw, 56px);
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.55rem 0.95rem;
+  border-radius: var(--radius-pill);
+  background: var(--hero-bg-alt);
+  border: 1px solid var(--hero-border);
+  box-shadow: 0 20px 44px -18px rgba(0, 0, 0, 0.6);
+}
+
+.hero-widget-label {
+  font-size: 0.66rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--hero-text-dim);
+  white-space: nowrap;
+}
+
+.hero-widget-icons {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.hero-widget-icon {
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--hero-border);
+  color: var(--hero-text-dim);
+  font-size: 0.72rem;
+}
+
+.hero-widget-icon--active {
+  background: var(--accent-lime);
+  border-color: var(--accent-lime);
+  color: #10130a;
+}
+
+/* --- Copy: eyebrow, heading, single CTA --- */
 .hero-copy {
   position: relative;
-  z-index: 2;
-  max-width: min(600px, 54%);
+  z-index: 3;
+  max-width: min(480px, 56%);
 }
 
 .hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 1rem;
+  color: var(--accent-lime);
+  margin-bottom: var(--space-md);
+}
+
+.hero-wave {
   display: inline-block;
-  font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--color-text-dim);
-  margin-bottom: clamp(var(--space-md), 4vh, var(--space-xl));
+  transform-origin: 70% 70%;
+  animation: hero-wave 2.4s ease-in-out infinite;
 }
 
-/* The name is set light and large — weight is carried by scale, not ink,
-   which is what keeps a page this empty feeling composed rather than bare. */
-.hero-wordmark {
-  margin: 0;
-  font-weight: 300;
-  letter-spacing: -0.045em;
-  line-height: 0.92;
-  color: var(--color-text);
+@keyframes hero-wave {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  10%, 30% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  40% { transform: rotate(10deg); }
 }
 
-.hero-wordmark-sub {
-  display: block;
-  font-size: clamp(2.1rem, 5.4vw, 4.3rem);
+.hero-heading {
+  font-weight: 600;
+  font-size: clamp(2.1rem, 4.4vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text-white);
+  margin-bottom: clamp(var(--space-lg), 4vh, var(--space-xl));
 }
 
-.hero-wordmark-main {
-  display: block;
-  font-size: clamp(2.6rem, 7.4vw, 6rem);
-  font-weight: 400;
-  letter-spacing: -0.05em;
-}
-
-.hero-rule {
-  width: 56px;
-  height: 1px;
-  margin: clamp(var(--space-md), 3vh, var(--space-lg)) 0 var(--space-md);
-  background: var(--color-border-strong);
-}
-
-.hero-tagline {
-  max-width: 460px;
-  font-size: clamp(0.95rem, 1.15vw, 1.02rem);
-  line-height: 1.7;
-  color: var(--color-text-dim);
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  margin-top: clamp(var(--space-md), 3.5vh, var(--space-lg));
-}
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--space-md);
-  margin-top: clamp(var(--space-lg), 5vh, var(--space-2xl));
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border);
-}
-
-.hero-stat dt {
-  font-size: 0.68rem;
-  color: var(--color-text-faint);
-  margin-bottom: 0.3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.11em;
-}
-
-.hero-stat dd {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 0.94rem;
-  color: var(--color-text);
-}
-
-/* --- Portrait --- */
-/* Anchored to the section's bottom-right and clipped by its overflow, so the
-   crop reads as a deliberate bleed rather than a photo that happens to stop.
-   Height is capped to the space under the header — at full height the hair
-   would sit behind the nav links and make them unreadable. */
-.hero-figure {
+/* --- Portrait: transparent-bg cutout, bottom-right, poking past the top --- */
+.hero-portrait {
   position: absolute;
-  right: 0;
+  right: clamp(20px, 3.6vw, 88px);
   bottom: 0;
-  z-index: 1;
+  z-index: 2;
+  height: 100%;
   margin: 0;
-  height: calc(100% - var(--header-height));
   pointer-events: none;
 }
 
-.hero-figure img {
+.hero-portrait img {
   height: 100%;
   width: auto;
   max-width: none;
   object-fit: contain;
   object-position: bottom right;
-  /* Monochrome so the one photograph sits inside a hueless page instead of
-     fighting it. Drop this filter for full colour. */
-  filter: grayscale(1) contrast(1.06) brightness(1.02);
+  filter: contrast(1.05) saturate(1.06) drop-shadow(0 30px 44px rgba(0, 0, 0, 0.5));
   animation: heroFigureIn 1.5s var(--ease-out) 0.1s both;
 }
 
@@ -598,15 +590,54 @@ button:focus-visible,
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* --- Scroll cue, set as a label like the reference --- */
-.scroll-cue {
+/* --- Bottom row: blurb left, stat trio right, pinned to the card floor --- */
+.hero-bottom {
   position: absolute;
-  left: max(var(--space-md), calc((100% - var(--max-width)) / 2));
-  bottom: var(--space-lg);
-  z-index: 2;
-  display: inline-flex;
+  left: clamp(28px, 3.4vw, 48px);
+  right: clamp(28px, 3.4vw, 48px);
+  bottom: clamp(28px, 3.4vw, 48px);
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+.hero-blurb {
+  max-width: 300px;
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--hero-text-dim);
+}
+
+.hero-stats {
+  display: flex;
+  gap: clamp(var(--space-md), 3vw, var(--space-xl));
+}
+
+.hero-stat dt {
+  font-family: var(--font-display);
+  font-size: clamp(1.4rem, 2.3vw, 1.9rem);
+  font-weight: 600;
+  color: var(--color-text-white);
+  margin-bottom: 0.35rem;
+}
+
+.hero-stat dd {
+  font-size: 0.7rem;
+  color: var(--hero-text-faint);
+  border-top: 1px solid var(--hero-border);
+  padding-top: 0.5rem;
+  max-width: 112px;
+}
+
+/* --- Scroll cue, centred below the card --- */
+.scroll-cue {
+  display: flex;
   align-items: center;
   gap: 0.55rem;
+  margin: var(--space-lg) auto 0;
+  width: max-content;
   font-size: 0.74rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -629,59 +660,59 @@ button:focus-visible,
 }
 
 @media (max-width: 1100px) {
-  .hero-figure { height: calc(88% - var(--header-height)); }
-  .hero-copy { max-width: min(500px, 52%); }
+  .hero-copy { max-width: min(420px, 52%); }
 }
 
 @media (max-width: 900px) {
-  /* Stack: portrait first as the visual hook, then the copy beneath it.
-     Shrinking the desktop split would leave both halves too narrow to read. */
-  .hero {
+  /* Stack: widget chip, then copy, then portrait as the visual hook, then
+     the blurb/stats row — the black card grows to fit its own content
+     instead of relying on a fixed proportion of the viewport. */
+  .hero-card {
     min-height: auto;
-    padding-bottom: var(--space-xl);
-  }
-
-  .hero-inner {
     display: flex;
     flex-direction: column;
-    row-gap: var(--space-lg);
+    padding-top: clamp(40px, 8vw, 56px);
   }
 
-  .hero-copy { max-width: 100%; }
+  .hero-widget {
+    position: static;
+    order: 0;
+    align-self: flex-start;
+    margin-bottom: var(--space-md);
+  }
 
-  .hero-figure {
+  .hero-copy { order: 1; max-width: 100%; }
+
+  .hero-portrait {
     position: relative;
+    order: 2;
     right: auto;
     bottom: auto;
-    order: -1;
+    height: min(48vh, 400px);
+    margin: var(--space-lg) auto 0;
     align-self: center;
-    height: min(52vh, 420px);
   }
 
-  .hero-figure img {
-    height: 100%;
-    object-position: bottom center;
-    /* Stacked, the crop lands mid-page instead of on the section floor, so
-       it needs to dissolve rather than end on a hard horizontal edge. */
-    -webkit-mask-image: linear-gradient(to bottom, #000 68%, transparent 99%);
-    mask-image: linear-gradient(to bottom, #000 68%, transparent 99%);
-  }
+  .hero-portrait img { object-position: bottom center; }
 
-  .hero-glow {
-    width: 100%;
-    height: 55%;
-    top: 0;
+  .hero-bottom {
+    position: relative;
+    order: 3;
+    left: auto;
+    right: auto;
     bottom: auto;
-    background: radial-gradient(ellipse at 50% 70%, rgba(19, 19, 18, 0.08) 0%, transparent 70%);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
   }
 
-  .hero-tagline { max-width: 100%; }
-  .scroll-cue { display: none; }
+  .hero-blurb { max-width: 100%; }
 }
 
 @media (max-width: 560px) {
-  .hero-figure { height: min(44vh, 340px); }
-  .hero-stats { grid-template-columns: 1fr; gap: var(--space-sm); }
+  .hero-portrait { height: min(40vh, 320px); }
+  .hero-stats { flex-wrap: wrap; gap: var(--space-md); }
 }
 
 /* ---------- 9. Generic section layout ---------- */
@@ -933,7 +964,7 @@ button:focus-visible,
   text-transform: uppercase;
   color: var(--accent-signal);
   background: var(--accent-signal-soft);
-  border: 1px solid rgba(138, 90, 23, 0.22);
+  border: 1px solid rgba(90, 107, 21, 0.22);
   padding: 0.3rem 0.7rem;
   border-radius: var(--radius-pill);
 }
@@ -951,7 +982,7 @@ button:focus-visible,
 
 .project-org a {
   color: var(--accent-signal);
-  border-bottom: 1px solid rgba(138, 90, 23, 0.4);
+  border-bottom: 1px solid rgba(90, 107, 21, 0.4);
   transition: color var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);
 }
 .project-org a:hover {
@@ -1045,7 +1076,7 @@ button:focus-visible,
 .contact-card {
   padding: var(--space-2xl) var(--space-lg);
   text-align: center;
-  background: linear-gradient(180deg, var(--color-surface), rgba(19, 19, 18, 0.012));
+  background: linear-gradient(180deg, var(--color-surface), rgba(13, 13, 13, 0.012));
 }
 
 .contact-card .section-title,
@@ -1199,7 +1230,7 @@ button:focus-visible,
     flex-direction: column;
     align-items: stretch;
     gap: 0;
-    background: rgba(242, 241, 238, 0.97);
+    background: rgba(255, 255, 255, 0.98);
     -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--color-border);
@@ -1212,23 +1243,13 @@ button:focus-visible,
 
   .nav-menu li { border-top: 1px solid var(--color-border); }
 
-  .nav-menu .nav-link,
-  .site-header.is-scrolled .nav-menu .nav-link {
+  .nav-menu .nav-link {
     display: block;
+    border-radius: 0;
     padding: var(--space-sm) var(--space-md);
     color: var(--color-text-dim);
   }
-  .nav-link::after { display: none; }
-  .nav-link--cta {
-    margin: var(--space-sm) var(--space-md);
-    text-align: center;
-  }
-  /* The dim link colour above would otherwise land on the CTA's orange
-     fill at ~2:1 — keep it white. */
-  .nav-menu .nav-link--cta,
-  .site-header.is-scrolled .nav-menu .nav-link--cta {
-    color: var(--color-text-white);
-  }
+  .nav-menu .nav-link.is-active { border-radius: var(--radius-sm); }
 }
 
 @media (max-width: 760px) {
@@ -1239,7 +1260,7 @@ button:focus-visible,
 }
 
 @media (max-width: 480px) {
-  .hero-actions { flex-direction: column; align-items: stretch; }
+  .contact-actions { flex-direction: column; align-items: stretch; }
   .btn { width: 100%; }
 }
 

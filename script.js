@@ -205,7 +205,7 @@
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(19, 19, 18, ' + p.a + ')';
+        ctx.fillStyle = 'rgba(13, 13, 13, ' + p.a + ')';
         ctx.fill();
       }
       rafId = requestAnimationFrame(tick);
