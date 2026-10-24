@@ -782,6 +782,72 @@ button:focus-visible,
   margin-bottom: 0.2rem;
 }
 
+.about-card-org,
+.timeline-org,
+.project-org {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.org-logo {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--color-border);
+  padding: 2px;
+}
+
+.org-logo--mono,
+.org-logo--icon {
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.org-logo--mono {
+  background: var(--accent-gradient);
+  border-color: transparent;
+  color: var(--accent-lime);
+}
+
+.org-logo--icon {
+  background: var(--color-surface-strong);
+  color: var(--color-text-dim);
+}
+
+.flag-row {
+  display: inline-flex;
+  gap: 0.3rem;
+  margin-left: auto;
+}
+
+.flag {
+  width: 20px;
+  height: 14px;
+  border-radius: 2px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+
+.flag-row--lg {
+  margin-top: var(--space-sm);
+  margin-left: 0;
+}
+
+.flag-row--lg .flag {
+  width: 26px;
+  height: 18px;
+}
+
 .about-card-org {
   color: var(--color-text-dim);
   font-size: 0.92rem;
@@ -833,6 +899,7 @@ button:focus-visible,
   border: 1px solid var(--color-border-strong);
   font-family: var(--font-display);
   font-size: 1.1rem;
+  color: var(--color-text);
   margin-bottom: var(--space-sm);
 }
 
@@ -848,6 +915,9 @@ button:focus-visible,
 }
 
 .tag-list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-size: 0.82rem;
   padding: 0.35rem 0.75rem;
   border-radius: var(--radius-pill);
@@ -855,6 +925,14 @@ button:focus-visible,
   border: 1px solid var(--color-border);
   color: var(--color-text-dim);
   transition: color var(--dur-fast), border-color var(--dur-fast), background var(--dur-fast);
+}
+
+.tag-list img,
+.project-stack img {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  object-fit: contain;
 }
 
 .skill-card:hover .tag-list li {
@@ -1005,6 +1083,9 @@ button:focus-visible,
 }
 
 .project-stack li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
   font-size: 0.78rem;
   padding: 0.3rem 0.65rem;
   border-radius: var(--radius-sm);
@@ -1015,8 +1096,26 @@ button:focus-visible,
 
 /* ---------- 14. Education ---------- */
 .education-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
   padding: var(--space-lg);
   margin-top: var(--space-lg);
+}
+
+.education-logo {
+  width: 72px;
+  height: auto;
+  flex-shrink: 0;
+  padding: 0.5rem;
+  border-radius: var(--radius-sm);
+  background: #fff;
+  border: 1px solid var(--color-border);
+}
+
+.education-body {
+  flex: 1;
+  min-width: 0;
 }
 
 .education-head {
@@ -1052,6 +1151,25 @@ button:focus-visible,
 
 .achievement-card {
   padding: var(--space-lg);
+}
+
+.achievement-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+}
+
+.achievement-head .achievement-number { margin-bottom: 0; }
+
+.achievement-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  background: var(--accent-signal-soft);
+  color: var(--accent-signal);
 }
 
 .achievement-number {
@@ -1109,6 +1227,18 @@ button:focus-visible,
   border-color: var(--accent-signal-bright);
   background: var(--color-surface-strong);
   box-shadow: 0 12px 32px -16px var(--accent-signal-soft);
+}
+
+.contact-link-icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 0.35rem;
+  border-radius: 50%;
+  background: var(--color-surface-strong);
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
 }
 
 .contact-link-label {
@@ -1262,6 +1392,9 @@ button:focus-visible,
 @media (max-width: 480px) {
   .contact-actions { flex-direction: column; align-items: stretch; }
   .btn { width: 100%; }
+  .education-card { gap: var(--space-sm); }
+  .education-logo { width: 52px; padding: 0.35rem; }
+  .flag-row { margin-left: 0; }
 }
 
 /* ---------- 21. Reduced motion ---------- */
