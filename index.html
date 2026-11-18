@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="preload" as="image" href="assets/hero/Hero.jpeg" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/photos/dope3.JPG" fetchpriority="high" />
 
   <link rel="stylesheet" href="style.css" />
   <script>document.documentElement.classList.add('js');</script>
@@ -85,6 +85,7 @@
 
       <ul class="nav-menu" id="nav-menu">
         <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#life" class="nav-link">Off the clock</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
         <li><a href="#experience" class="nav-link">Experience</a></li>
         <li><a href="#projects" class="nav-link">Projects</a></li>
@@ -111,23 +112,9 @@
 
   <main id="main">
 
-    <!-- ===== Hero — "Guyman Engineer" =====
-         Layer order (back → front): photo · shade · wordmark · cut-out subject
-         · devtools overlay · copy. The photo, the cut-out and the overlay share
-         one "frame" geometry (an object-fit: cover clone built from container
-         units), so they stay pixel-aligned while the wordmark slides between
-         them — that's what puts the name *behind* him. -->
-    <section class="hero" id="hero" aria-label="Introduction">
+    <!-- ===== Hero — centered JPEG print, wordmark and code × culture details ===== -->
+    <section class="hero" id="hero" aria-label="Introduction" data-hero-look="print">
       <div class="hero-media" aria-hidden="true">
-
-        <div class="hero-frame hero-frame--bg">
-          <div class="hero-reveal">
-            <img class="hero-bg"
-              src="assets/hero/Hero.jpeg"
-              width="3024" height="4032" alt=""
-              fetchpriority="high" decoding="async" />
-          </div>
-        </div>
 
         <div class="hero-shade"></div>
         <div class="hero-spotlight"></div>
@@ -136,20 +123,15 @@
           <span class="hero-wordmark-line"><span style="--i:0">M</span><span style="--i:1">A</span><span style="--i:2">C</span><span style="--i:3">-</span></span><span class="hero-wordmark-line"><span style="--i:4">A</span><span style="--i:5">R</span><span style="--i:6">T</span><span style="--i:7">H</span><span style="--i:8">U</span><span style="--i:9">R</span></span>
         </div>
 
-        <div class="hero-frame hero-frame--subject">
+        <!-- Optional silhouette: uncomment this image, the switch below, and the hero-look block in script.js to restore.
+        <div class="hero-silhouette"><img src="assets/hero/headshot-cutout.png" width="1088" height="1448" alt="" fetchpriority="high" decoding="sync" /></div>
+        -->
+        <div class="hero-frame hero-frame--portrait">
           <div class="hero-reveal">
-            <!-- Same JPEG as the background, drawn through an alpha mask of the
-                 subject — no second re-encoded copy, so the detail is identical.
-                 (Inline SVG mask rather than CSS mask-image, which browsers
-                 refuse to load from file:// previews.) -->
-            <svg class="hero-subject" viewBox="0 0 3024 4032" preserveAspectRatio="xMidYMid slice" focusable="false">
-              <defs>
-                <mask id="hero-subject-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="3024" height="4032" style="mask-type: alpha">
-                  <image href="assets/hero/hero-mask.png" width="3024" height="4032" />
-                </mask>
-              </defs>
-              <image href="assets/hero/Hero.jpeg" width="3024" height="4032" mask="url(#hero-subject-mask)" />
-            </svg>
+            <figure class="hero-portrait">
+              <img class="hero-bg hero-portrait-image" src="assets/photos/dope3.JPG" width="1170" height="2080" alt="" fetchpriority="high" decoding="sync" />
+              <figcaption><span>Guyman, in his element.</span><span>Accra, GH</span></figcaption>
+            </figure>
           </div>
         </div>
 
@@ -171,6 +153,12 @@
         <div class="hero-grain"></div>
       </div>
 
+      <!-- Optional hero image switch (disabled for the photo-print version).
+      <div class="hero-look-switch" role="group" aria-label="Hero image style" hidden>
+        <button type="button" data-hero-look="silhouette" aria-pressed="false">Silhouette</button>
+        <button type="button" data-hero-look="print" aria-pressed="true">Photo print</button>
+      </div>
+      -->
       <div class="hero-content">
         <div class="hero-topline" data-intro style="--d:0">
           <p class="hero-status"><span class="hero-status-dot" aria-hidden="true"></span>Open to new projects</p>
@@ -198,7 +186,7 @@
               <span>See the work</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
             </a>
-            <a href="#about" class="btn btn-ripple hero-cta hero-cta--ghost" data-magnetic>
+            <a href="#life" class="btn btn-ripple hero-cta hero-cta--ghost" data-magnetic>
               <span>Off the clock</span>
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
             </a>
@@ -216,8 +204,8 @@
               <figcaption>BSc. '24 — got myself</figcaption>
             </figure>
             <figure class="polaroid" style="--r:-2deg; --x:0%; --y:0%">
-              <picture><source type="image/avif" srcset="assets/hero/life-dope3.avif" /><img src="assets/hero/life-dope3.webp" width="840" height="1050" alt="Mac-Arthur posing in a camo shirt and cap" loading="lazy" decoding="async" /></picture>
-              <figcaption>drip check ✓</figcaption>
+              <picture><img src="assets/hero/Hero.jpeg" width="3024" height="4032" alt="Mac-Arthur in a black tee and denim shorts, sitting on a wooden rail in a garden" loading="lazy" decoding="async" /></picture>
+              <figcaption>off duty ✓</figcaption>
             </figure>
 
             <div class="hero-badge" aria-hidden="true">
@@ -251,110 +239,388 @@
       </div>
     </div>
 
-    <!-- ===== About ===== -->
-    <section class="section" id="about" aria-labelledby="about-heading">
-      <div class="section-inner">
-        <p class="section-kicker reveal" data-reveal="fade-up">About</p>
-        <h2 class="section-title reveal" data-reveal="fade-up" id="about-heading">Engineering financial infrastructure that people can rely on</h2>
+    <!-- ===== About =====
+         Cream editorial slab. One frame, two modes: the 9–5 portrait and the
+         after-5 shot, swapped by a circular wipe from the switch. The
+         whoami.json card lights up whichever lines belong to the active mode.
+         Without JS it's a static portrait with the full card visible. -->
+    <section class="about" id="about" aria-labelledby="about-heading" data-mode="work">
+      <div class="about-inner">
 
-        <div class="about-grid">
+        <header class="about-head">
+          <p class="about-kicker reveal" data-reveal="fade-up"><span>01</span> About</p>
+          <h2 class="about-title" id="about-heading" data-words>
+            I build <em>software.</em> Outside of that, I’m into <span class="about-mark">art&nbsp;&amp;&nbsp;living.</span>
+          </h2>
+        </header>
+
+        <div class="about-aside">
+        <div class="about-visual reveal" data-reveal="fade-up">
+          <div class="about-switch" role="group" aria-label="Show me">
+            <span class="about-switch-thumb" aria-hidden="true"></span>
+            <button type="button" class="about-switch-btn" data-set-mode="work" aria-pressed="true"><span class="about-switch-dot" aria-hidden="true"></span>9–5</button>
+            <button type="button" class="about-switch-btn" data-set-mode="life" aria-pressed="false"><span class="about-switch-dot" aria-hidden="true"></span>after 5</button>
+          </div>
+
+          <div class="about-photo">
+            <picture class="about-shot about-shot--work">
+              <source type="image/avif" srcset="assets/about/about-work.avif" />
+              <img src="assets/about/about-work.webp" width="1000" height="1250" alt="Studio portrait of Mac-Arthur, arms crossed, in a maroon button-up shirt" loading="lazy" decoding="async" />
+            </picture>
+            <picture class="about-shot about-shot--life">
+              <source type="image/avif" srcset="assets/photos/dope1.JPG" />
+              <img src="assets/photos/dope1.JPG" width="1000" height="1250" alt="Mac-Arthur in a Brooklyn cap, brown tee and denim shorts, sitting on a wooden rail in a sunny garden" loading="lazy" decoding="async" />
+            </picture>
+            <p class="about-photo-tag" aria-hidden="true">mode: <b class="for-work">"work"</b><b class="for-life">"life"</b></p>
+          </div>
+
+          <p class="about-note" aria-hidden="true">
+            <svg viewBox="0 0 90 60" fill="none"><path d="M84 6 C 62 4, 30 12, 22 40" /><path d="M12 30 L 21 43 L 33 33" /></svg>
+            <span>same guy.</span>
+          </p>
+        </div>
+        </div>
+
+        <div class="about-body">
           <div class="about-copy reveal" data-reveal="fade-up">
             <p>
-              I'm a full-stack software engineer based in Accra, Ghana, specializing in secure,
-              high-availability fintech platforms. My work centers on delivering cross-border
-              payment integrations and agent-banking systems for banks and microfinance
-              institutions across Africa — taking financial products from development all the
-              way through production deployment.
+              I'm <strong>Immanuel Justice Mac-Arthur</strong>, a software developer based in
+              Accra, Ghana. I build fintech applications and websites, working with C#,
+              TypeScript, JavaScript, Python and other tools to bring ideas to life.
+              I enjoy making software that’s useful and easy to use.
             </p>
             <p>
-              I work primarily in C# and .NET on the backend, paired with modern JavaScript
-              frameworks on the front end. Beyond writing code, I own delivery end to end:
-              UI integration, configuration, testing, production migration, and post-deployment
-              support — collaborating directly with regional banks and internal stakeholders to
-              get real financial products live.
-            </p>
-            <p>
-              I also build outside of fintech — designing and shipping landing pages and
-              websites for businesses and organizations that need a fast, polished web presence.
+              My experience includes helping develop agent banking platforms and onboarding
+              banks across Africa onto a cross-border payment platform. It’s given me the
+              opportunity to work with teams across different markets and help put these
+              systems into everyday use.
             </p>
           </div>
 
-          <div class="about-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="120">
-            <h3>Currently</h3>
-            <p class="about-card-role">Software Developer</p>
-            <p class="about-card-org"><span class="org-logo org-logo--mono" aria-hidden="true">OA</span><span>Oakwood Advansio, Accra — 2025 to Present</span></p>
-            <ul class="about-card-list">
-              <li>Frontend development &amp; systems integration for high-security fintech platforms</li>
-              <li>End-to-end technical delivery, from UI through production migration</li>
-              <li>Direct collaboration with regional banks &amp; microfinance institutions</li>
-            </ul>
-          </div>
+          <figure class="about-code reveal" data-reveal="fade-up" data-reveal-delay="100">
+            <figcaption class="about-code-bar">
+              <span class="about-code-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="about-code-file">whoami.json</span>
+              <span class="about-code-mode" aria-hidden="true"><span class="for-work">--mode=work</span><span class="for-life">--mode=life</span></span>
+            </figcaption>
+<pre class="about-code-body"><code><span class="ln">{</span>
+<span class="ln">  <span class="k">"name"</span>: <span class="s">"Immanuel Justice Mac-Arthur"</span>,</span>
+<span class="ln">  <span class="k">"aka"</span>: <span class="s">"Guyman Engineer"</span>,</span>
+<span class="ln">  <span class="k">"based"</span>: <span class="s">"Accra, GH"</span>,</span>
+<span class="ln" data-for="work">  <span class="k">"role"</span>: <span class="s">"Software Developer @ Oakwood Advansio"</span>,</span>
+<span class="ln" data-for="work">  <span class="k">"stack"</span>: [<span class="s">"C#"</span>, <span class="s">".NET"</span>, <span class="s">"Angular"</span>, <span class="s">"SQL Server"</span>],</span>
+<span class="ln" data-for="work">  <span class="k">"ships"</span>: <span class="s">"payments + agent banking"</span>,</span>
+<span class="ln" data-for="life">  <span class="k">"offTheClock"</span>: [<span class="s">"fits"</span>, <span class="s">"art"</span>, <span class="s">"music"</span>, <span class="s">"functions"</span>],</span>
+<span class="ln" data-for="life">  <span class="k">"bestFeature"</span>: <span class="s">"the people"</span>,</span>
+<span class="ln">  <span class="k">"status"</span>: <span class="s">"open to new projects"</span></span>
+<span class="ln">}</span></code></pre>
+          </figure>
         </div>
+
+        <ul class="about-stats" role="list">
+          <li class="about-stat reveal" data-reveal="fade-up">
+            <b class="about-stat-num">06+</b>
+            <span class="about-stat-label">African markets supported</span>
+            <span class="about-stat-flags"><img src="assets/flags/ng.svg" alt="Nigeria" title="Nigeria" width="20" height="14" loading="lazy" /><img src="assets/flags/zm.svg" alt="Zambia" title="Zambia" width="20" height="14" loading="lazy" /><img src="assets/flags/zw.svg" alt="Zimbabwe" title="Zimbabwe" width="20" height="14" loading="lazy" /><img src="assets/flags/lr.svg" alt="Liberia" title="Liberia" width="20" height="14" loading="lazy" /><img src="assets/flags/ke.svg" alt="Kenya" title="Kenya" width="20" height="14" loading="lazy" /><img src="assets/flags/ug.svg" alt="Uganda" title="Uganda" width="20" height="14" loading="lazy" /><img src="assets/flags/gh.svg" alt="Ghana" title="Ghana" width="20" height="14" loading="lazy" /></span>
+          </li>
+          <li class="about-stat reveal" data-reveal="fade-up" data-reveal-delay="80">
+            <b class="about-stat-num">05+</b>
+            <span class="about-stat-label">Apps &amp; platforms contributed to</span>
+          </li>
+          <li class="about-stat reveal" data-reveal="fade-up" data-reveal-delay="160">
+            <b class="about-stat-num">’24</b>
+            <span class="about-stat-label">BSc Computer Engineering, University of Ghana</span>
+          </li>
+          <li class="about-stat about-stat--lime reveal" data-reveal="fade-up" data-reveal-delay="240">
+            <b class="about-stat-num">∞</b>
+            <span class="about-stat-label">Fits, functions &amp; good people</span>
+          </li>
+        </ul>
+
       </div>
     </section>
 
+    <!-- ===== Off the clock =====
+         A pinned, horizontally-scrolling zine wall. Without JS (or with
+         reduced motion) it degrades to a native swipeable row. The EXIF lines
+         show the dates available from the original photos. -->
+    <section class="life" id="life" aria-labelledby="life-heading" data-header-dark>
+      <div class="life-pin">
+
+        <div class="life-ghost" aria-hidden="true">
+          <div class="life-ghost-track">Off the clock <i></i> Off the clock <i></i> Off the clock <i></i> Off the clock <i></i></div>
+        </div>
+
+        <div class="life-viewport">
+          <ol class="life-track" role="list">
+
+            <li class="life-intro">
+              <p class="life-kicker"><span>02</span> Off the clock</p>
+              <h2 class="life-title" id="life-heading">Life after <code class="life-code">git&nbsp;push<span class="life-code-caret" aria-hidden="true"></span></code></h2>
+              <p class="life-lede">
+                I build fintech for a living. This is everything else: the fits,
+                the functions, the art and the people who keep me human.
+              </p>
+              <p class="life-hint" aria-hidden="true">
+                <span class="life-hint-pinned">Keep scrolling</span><span class="life-hint-static">Swipe through</span>
+                <svg width="74" height="22" viewBox="0 0 74 22" fill="none"><path class="life-hint-line" d="M2 14 C 18 4, 34 20, 50 10 S 66 8, 70 11" /><path d="M63 5 L 71 11 L 62 16" /></svg>
+              </p>
+            </li>
+
+            <li class="life-card" data-chapter="Fits" style="--ar: 2/3; --h: 1; --off: -3svh; --rot: -1.4deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: Camo, but make it a statement">
+                  <picture><source type="image/avif" srcset="assets/life/fits-camo.avif" /><img src="assets/life/fits-camo.webp" width="1067" height="1600" alt="Mac-Arthur in a camo shirt, black shorts and a white cap, throwing hand signs in a store aisle" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption><span class="life-chapter">01 · Fits</span><span class="life-caption">Camo, but make it a statement.</span><span class="life-exif">Mar 2026</span></figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card" data-chapter="Fits" style="--ar: 3/4; --h: 1; --off: -3svh; --rot: -1.4deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: A quick stop, a good fit">
+                  <picture><img src="assets/photos/Standshot.jpeg" width="3024" height="4032" alt="Mac-Arthur in a camo shirt, denim shorts and trainers beside a white car at a roadside fruit stand" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">02 · Fits</span>
+                  <span class="life-caption">A quick stop, a good fit.</span>
+                  <span class="life-exif"></span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card" data-chapter="Fits" style="--ar: 2/3; --h: 0.84; --off: 6svh; --rot: 1.2deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: Every corridor is a runway">
+                  <picture><source type="image/avif" srcset="assets/life/fits-corridor.avif" /><img src="assets/life/fits-corridor.webp" width="1067" height="1600" alt="Mac-Arthur in an RDM jersey, white jeans and sunglasses standing in a narrow lit corridor" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">03 · Fits</span>
+                  <span class="life-caption">Every corridor is a runway.</span>
+                  <span class="life-exif">May 2024</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card life-card--type life-card--lime" data-chapter="Fits" style="--h: 0.8; --off: -5svh; --rot: -2deg">
+              <div class="life-type">
+                <svg class="life-type-icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 12a4 4 0 1 1 4 4c-2 0-4 1.5-4 3.5v1.5M24 21L5 33.5c-1.6 1-.9 3.5 1 3.5h36c1.9 0 2.6-2.5 1-3.5L24 21z" /></svg>
+                <p class="life-type-big">Dress like<br />you ship.</p>
+                <p class="life-type-small">// with intent.<br />// no hotfixes.</p>
+              </div>
+            </li>
+
+            <li class="life-card" data-chapter="Functions" style="--ar: 4/5; --h: 0.9; --off: 2svh; --rot: 1.6deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: Where the code reviews can't reach">
+                  <picture><source type="image/avif" srcset="assets/life/functions-neon.avif" /><img src="assets/life/functions-neon.webp" width="1086" height="1358" alt="Mac-Arthur and a friend at a party lit in pink and green neon" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">04 · Functions</span>
+                  <span class="life-caption">Where the code reviews can't reach.</span>
+                  <span class="life-exif"></span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card" data-chapter="Functions" style="--ar: 4/5; --h: 0.74; --off: -8svh; --rot: -1deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: Day ones, night shifts">
+                  <picture><source type="image/avif" srcset="assets/life/functions-dayones.avif" /><img src="assets/life/functions-dayones.webp" width="1086" height="1358" alt="Mac-Arthur in a vintage cap and sunglasses shaking hands with a friend against a dark backdrop with blue neon" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">05 · Functions</span>
+                  <span class="life-caption">Day ones, night shifts.</span>
+                  <span class="life-exif"></span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card" data-chapter="Escapes" style="--ar: 3/4; --h: 0.96; --off: 3svh; --rot: 0.8deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: New year, new coastline">
+                  <picture><source type="image/avif" srcset="assets/life/escapes-coast.avif" /><img src="assets/life/escapes-coast.webp" width="1162" height="1550" alt="Mac-Arthur and a friend standing arms crossed on a beach lined with palm trees and thatched huts" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">06 · Escapes</span>
+                  <span class="life-caption">New year, new coastline.</span>
+                  <span class="life-exif">Jan 2026</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card life-card--type life-card--paper" data-chapter="Art" style="--h: 0.86; --off: -4svh; --rot: 1.8deg">
+              <div class="life-type">
+                <svg class="life-art" viewBox="0 0 200 120" aria-hidden="true">
+                  <circle class="life-art-sun" cx="150" cy="36" r="22" />
+                  <path class="life-art-squiggle" d="M8 92 C 30 60, 52 118, 74 86 S 118 56, 138 88 S 176 112, 194 80" />
+                  <path class="life-art-star" d="M48 14l3.6 9.4L61 27l-9.4 3.6L48 40l-3.6-9.4L35 27l9.4-3.6z" />
+                </svg>
+                <p class="life-type-serif"><em>Art,</em> design, sound —<br />anything with a<br />point of view.</p>
+                <p class="life-type-small">// the other half of the brain<br />// gets a commit history too.</p>
+              </div>
+            </li>
+
+            <li class="life-card" data-chapter="Milestones" style="--ar: 2/3; --h: 1; --off: 2svh; --rot: -1.2deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: Adey get myself">
+                  <picture><source type="image/avif" srcset="assets/life/milestone-kente.avif" /><img src="assets/life/milestone-kente.webp" width="1067" height="1600" alt="Mac-Arthur adjusting his sunglasses, wearing a kente graduation stole that reads Adey get myself, BSc Computer Engineering 2024" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">07 · Milestones</span>
+                  <span class="life-caption">“Adey get myself.” BSc Computer Engineering.</span>
+                  <span class="life-exif">Feb 2025</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card" data-chapter="Milestones" style="--ar: 4/5; --h: 0.78; --off: -6svh; --rot: 1.4deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: Golden hour with the class of '24">
+                  <picture><source type="image/avif" srcset="assets/life/milestone-sunset.avif" /><img src="assets/life/milestone-sunset.webp" width="1280" height="1600" alt="Mac-Arthur and a classmate in suits and kente stoles posing at sunset" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">08 · Milestones</span>
+                  <span class="life-caption">Golden hour with the class of ’24.</span>
+                  <span class="life-exif">Feb 2025</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card" data-chapter="Milestones" style="--ar: 3/4; --h: 0.9; --off: 5svh; --rot: -0.8deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: Brought the trophy home">
+                  <picture><source type="image/avif" srcset="assets/life/milestone-award.avif" /><img src="assets/life/milestone-award.webp" width="1200" height="1600" alt="Mac-Arthur in a blue suit and sunglasses holding up an award trophy in front of a sponsor backdrop" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">09 · Milestones</span>
+                  <span class="life-caption">Brought the trophy home.</span>
+                  <span class="life-exif">Aug 2024</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card" data-chapter="People" style="--ar: 3/4; --h: 0.94; --off: -3svh; --rot: 1.2deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: The people are the point">
+                  <picture><source type="image/avif" srcset="assets/life/people-squad.avif" /><img src="assets/life/people-squad.webp" width="1200" height="1600" alt="Selfie of Mac-Arthur and friends throwing peace signs on campus" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">10 · People</span>
+                  <span class="life-caption">The people are the point.</span>
+                  <span class="life-exif">Jun 2024</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-outro" data-chapter="People">
+              <p class="life-outro-kicker">// clocking back in?</p>
+              <p class="life-outro-title">Same energy.<br /><em>Different</em> terminal.</p>
+              <div class="life-outro-ctas">
+                <a href="#contact" class="life-outro-cta">
+                  <span>Let's link</span>
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+                </a>
+                <a href="#projects" class="life-outro-link">or see the work →</a>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+
+        <div class="life-hud">
+          <nav class="life-chapters" aria-label="Off the clock chapters">
+            <button type="button" data-goto="Fits">Fits</button>
+            <button type="button" data-goto="Functions">Functions</button>
+            <button type="button" data-goto="Escapes">Escapes</button>
+            <button type="button" data-goto="Art">Art</button>
+            <button type="button" data-goto="Milestones">Milestones</button>
+            <button type="button" data-goto="People">People</button>
+          </nav>
+          <div class="life-progress" aria-hidden="true"><span class="life-progress-bar"></span></div>
+        </div>
+      </div>
+
+      <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
+        <div class="lightbox-inner">
+          <picture class="lightbox-media"><source type="image/avif" /><img alt="" /></picture>
+          <div class="lightbox-info">
+            <p class="lightbox-chapter"></p>
+            <p class="lightbox-caption"></p>
+            <p class="lightbox-exif"></p>
+          </div>
+          <button type="button" class="lightbox-btn lightbox-prev" aria-label="Previous photo">←</button>
+          <button type="button" class="lightbox-btn lightbox-next" aria-label="Next photo">→</button>
+          <button type="button" class="lightbox-btn lightbox-close" aria-label="Close photo viewer">✕</button>
+        </div>
+      </dialog>
+    </section>
+
     <!-- ===== Skills ===== -->
-    <section class="section" id="skills" aria-labelledby="skills-heading">
-      <div class="section-inner">
-        <p class="section-kicker reveal" data-reveal="fade-up">Capabilities</p>
-        <h2 class="section-title reveal" data-reveal="fade-up" id="skills-heading">Skills &amp; Technologies</h2>
-        <p class="section-lede reveal" data-reveal="fade-up">
-          A pragmatic, production-tested toolkit spanning backend systems, frontend
-          experiences, data, infrastructure and the cloud.
-        </p>
+    <section class="section skills" id="skills" aria-labelledby="skills-heading">
+      <div class="section-inner skills-inner">
+        <header class="skills-intro">
+          <p class="about-kicker reveal" data-reveal="fade-up"><span>03</span> The toolkit</p>
+          <h2 class="skills-title reveal" data-reveal="fade-up" id="skills-heading">What I<br />build <em>with.</em></h2>
+          <p class="skills-lede reveal" data-reveal="fade-up">From the interface to the database — the languages and tools I use to build apps and websites.</p>
+          <div class="skills-note reveal" data-reveal="fade-up">
+            <span class="skills-note-label">// my approach</span>
+            <p>Understand the problem.<br />Pick the right tools.<br /><span>Build from there.</span></p>
+          </div>
+        </header>
 
         <div class="skills-grid">
 
-          <div class="skill-card glass-card reveal" data-reveal="fade-up" data-tilt>
-            <div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+          <div class="skill-card reveal" data-reveal="fade-up">
+            <span class="skill-number" aria-hidden="true">01</span><div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
             <h3>Languages</h3>
             <ul class="tag-list">
               <li><img src="assets/icons/csharp.svg" alt="" width="16" height="16" loading="lazy" />C#</li><li><img src="assets/icons/javascript.svg" alt="" width="16" height="16" loading="lazy" />JavaScript</li><li><img src="assets/icons/typescript.svg" alt="" width="16" height="16" loading="lazy" />TypeScript</li><li><img src="assets/icons/python.svg" alt="" width="16" height="16" loading="lazy" />Python</li>
             </ul>
           </div>
 
-          <div class="skill-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="60" data-tilt>
-            <div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><line x1="7" y1="7" x2="7.01" y2="7"/><line x1="7" y1="17" x2="7.01" y2="17"/></svg></div>
+          <div class="skill-card reveal" data-reveal="fade-up" data-reveal-delay="60">
+            <span class="skill-number" aria-hidden="true">02</span><div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><line x1="7" y1="7" x2="7.01" y2="7"/><line x1="7" y1="17" x2="7.01" y2="17"/></svg></div>
             <h3>Backend</h3>
             <ul class="tag-list">
               <li><img src="assets/icons/dotnetcore.svg" alt="" width="16" height="16" loading="lazy" />.NET (Core, 8, 10)</li><li><img src="assets/icons/dotnetcore.svg" alt="" width="16" height="16" loading="lazy" />ASP.NET Core</li><li><img src="assets/icons/dotnetcore.svg" alt="" width="16" height="16" loading="lazy" />ASP.NET MVC</li><li><img src="assets/icons/dotnetcore.svg" alt="" width="16" height="16" loading="lazy" />Entity Framework Core</li><li>REST APIs</li>
             </ul>
           </div>
 
-          <div class="skill-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="120" data-tilt>
-            <div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="20"/></svg></div>
+          <div class="skill-card reveal" data-reveal="fade-up" data-reveal-delay="120">
+            <span class="skill-number" aria-hidden="true">03</span><div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="9" x2="9" y2="20"/></svg></div>
             <h3>Frontend</h3>
             <ul class="tag-list">
               <li><img src="assets/icons/blazor.svg" alt="" width="16" height="16" loading="lazy" />Blazor</li><li><img src="assets/icons/angular.svg" alt="" width="16" height="16" loading="lazy" />Angular</li><li><img src="assets/icons/html5.svg" alt="" width="16" height="16" loading="lazy" />HTML5</li><li><img src="assets/icons/css3.svg" alt="" width="16" height="16" loading="lazy" />CSS3</li><li><img src="assets/icons/bootstrap.svg" alt="" width="16" height="16" loading="lazy" />Bootstrap</li><li><img src="assets/icons/tailwindcss.svg" alt="" width="16" height="16" loading="lazy" />Tailwind CSS</li><li><img src="assets/icons/daisyui.svg" alt="" width="16" height="16" loading="lazy" />DaisyUI</li>
             </ul>
           </div>
 
-          <div class="skill-card glass-card reveal" data-reveal="fade-up" data-tilt>
-            <div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
+          <div class="skill-card reveal" data-reveal="fade-up">
+            <span class="skill-number" aria-hidden="true">04</span><div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
             <h3>Databases</h3>
             <ul class="tag-list">
               <li><img src="assets/icons/postgresql.svg" alt="" width="16" height="16" loading="lazy" />PostgreSQL</li><li><img src="assets/icons/microsoftsqlserver.svg" alt="" width="16" height="16" loading="lazy" />SQL Server</li>
             </ul>
           </div>
 
-          <div class="skill-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="60" data-tilt>
-            <div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg></div>
+          <div class="skill-card reveal" data-reveal="fade-up" data-reveal-delay="60">
+            <span class="skill-number" aria-hidden="true">05</span><div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.7l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.7l7 4a2 2 0 0 0 2 0l7-4a2 2 0 0 0 1-1.7z"/><polyline points="3.3 7 12 12 20.7 7"/><line x1="12" y1="22" x2="12" y2="12"/></svg></div>
             <h3>DevOps</h3>
             <ul class="tag-list">
               <li><img src="assets/icons/docker.svg" alt="" width="16" height="16" loading="lazy" />Docker</li><li><img src="assets/icons/nginx.svg" alt="" width="16" height="16" loading="lazy" />NGINX</li><li><img src="assets/icons/linux.svg" alt="" width="16" height="16" loading="lazy" />Linux</li><li><img src="assets/icons/git.svg" alt="" width="16" height="16" loading="lazy" />Git</li>
             </ul>
           </div>
 
-          <div class="skill-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="120" data-tilt>
-            <div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.3A7 7 0 1 0 9 19h9a4.5 4.5 0 0 0 0-9z"/></svg></div>
+          <div class="skill-card reveal" data-reveal="fade-up" data-reveal-delay="120">
+            <span class="skill-number" aria-hidden="true">06</span><div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.3A7 7 0 1 0 9 19h9a4.5 4.5 0 0 0 0-9z"/></svg></div>
             <h3>Cloud &amp; Networking</h3>
             <ul class="tag-list">
               <li><img src="assets/icons/amazonwebservices.svg" alt="" width="16" height="16" loading="lazy" />AWS</li><li>Cloud Infrastructure</li><li>Networking Fundamentals</li>
             </ul>
           </div>
 
-          <div class="skill-card glass-card reveal" data-reveal="fade-up" data-tilt>
-            <div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
+          <div class="skill-card reveal" data-reveal="fade-up">
+            <span class="skill-number" aria-hidden="true">07</span><div class="skill-card-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/></svg></div>
             <h3>AI-Assisted Development</h3>
             <ul class="tag-list">
               <li><img src="assets/icons/claude.svg" alt="" width="16" height="16" loading="lazy" />Claude Code</li><li>AI Pair Programming</li><li>AI-Accelerated Workflows</li>
@@ -366,32 +632,43 @@
     </section>
 
     <!-- ===== Experience ===== -->
-    <section class="section" id="experience" aria-labelledby="experience-heading">
+    <section class="section experience" id="experience" data-header-dark aria-labelledby="experience-heading">
       <div class="section-inner">
-        <p class="section-kicker reveal" data-reveal="fade-up">Career</p>
-        <h2 class="section-title reveal" data-reveal="fade-up" id="experience-heading">Experience</h2>
+        <header class="experience-head">
+          <div>
+            <p class="about-kicker reveal" data-reveal="fade-up"><span>04</span> Experience</p>
+            <h2 class="experience-title reveal" data-reveal="fade-up" id="experience-heading">The work<br /><em>so far.</em></h2>
+          </div>
+          <div class="experience-summary reveal" data-reveal="fade-up">
+            <p>From networking and web development to fintech. A few chapters in what I’m learning and building.</p>
+            <span class="career-status"><i aria-hidden="true"></i> Currently at Oakwood Advansio</span>
+          </div>
+        </header>
+        <div class="career-index" aria-hidden="true"><span>// career.log</span><span>2022 — present</span></div>
 
         <ol class="timeline">
           <li class="timeline-item reveal" data-reveal="fade-up">
+            <div class="career-year" aria-hidden="true"><b>2025</b><span>— Present</span></div>
             <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content glass-card">
+            <div class="timeline-content">
               <div class="timeline-head">
                 <h3>Software Developer</h3>
                 <span class="timeline-date">2025 — Present</span>
               </div>
               <p class="timeline-org"><span class="org-logo org-logo--mono" aria-hidden="true">OA</span><span>Oakwood Advansio (Subsidiary of Oakwood Green Africa) · Accra, Ghana</span></p>
               <ul>
-                <li>Retained full-time following a highly successful National Service deployment, recognized for measurable technical contributions.</li>
-                <li>Lead frontend development and systems integration across the software development lifecycle for high-security, cross-border fintech platforms.</li>
-                <li>Own technical delivery end to end — from UI integration and configuration through testing, production migration, and post-deployment support.</li>
+                <li>Joined full-time after completing National Service with the team.</li>
+                <li>Work on frontend development and systems integration for cross-border payment platforms.</li>
+                <li>Help with UI integration, configuration, testing, deployment and support.</li>
                 <li>Collaborate with regional banks, microfinance institutions, and internal stakeholders to deliver and deploy payment and agent-banking solutions.</li>
               </ul>
             </div>
           </li>
 
           <li class="timeline-item reveal" data-reveal="fade-up">
+            <div class="career-year" aria-hidden="true"><b>2024</b><span>— 2025</span></div>
             <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content glass-card">
+            <div class="timeline-content">
               <div class="timeline-head">
                 <h3>Junior Software Developer</h3>
                 <span class="timeline-date">2024 — 2025</span>
@@ -405,8 +682,9 @@
           </li>
 
           <li class="timeline-item reveal" data-reveal="fade-up">
+            <div class="career-year" aria-hidden="true"><b>2023</b><span>— Internship</span></div>
             <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content glass-card">
+            <div class="timeline-content">
               <div class="timeline-head">
                 <h3>Web Development Intern</h3>
                 <span class="timeline-date">2023</span>
@@ -419,8 +697,9 @@
           </li>
 
           <li class="timeline-item reveal" data-reveal="fade-up">
+            <div class="career-year" aria-hidden="true"><b>2022</b><span>— Internship</span></div>
             <div class="timeline-marker" aria-hidden="true"></div>
-            <div class="timeline-content glass-card">
+            <div class="timeline-content">
               <div class="timeline-head">
                 <h3>Networking Intern</h3>
                 <span class="timeline-date">2022</span>
@@ -436,19 +715,30 @@
     </section>
 
     <!-- ===== Projects ===== -->
-    <section class="section" id="projects" aria-labelledby="projects-heading">
+    <section class="section projects" id="projects" aria-labelledby="projects-heading">
       <div class="section-inner">
-        <p class="section-kicker reveal" data-reveal="fade-up">Selected Work</p>
-        <h2 class="section-title reveal" data-reveal="fade-up" id="projects-heading">Projects</h2>
-        <p class="section-lede reveal" data-reveal="fade-up">
-          Production platforms delivered end to end — from build through deployment —
-          for financial institutions across Africa, alongside landing pages and
-          websites for businesses outside of fintech.
-        </p>
+        <header class="projects-head">
+          <div>
+            <p class="about-kicker reveal" data-reveal="fade-up"><span>05</span> Selected work</p>
+            <h2 class="projects-title reveal" data-reveal="fade-up" id="projects-heading">From code<br />to <em>real use.</em></h2>
+          </div>
+          <p class="projects-lede reveal" data-reveal="fade-up">Payment integrations, agent banking, internal tools and websites. A selection of projects I’ve worked on.</p>
+        </header>
+        <div class="project-controls" hidden>
+          <div class="project-filters" role="group" aria-label="Filter projects">
+            <button type="button" data-project-filter="all" aria-pressed="true">All work <span>05</span></button>
+            <button type="button" data-project-filter="fintech" aria-pressed="false">Fintech</button>
+            <button type="button" data-project-filter="web" aria-pressed="false">Websites</button>
+            <button type="button" data-project-filter="internal" aria-pressed="false">Internal tools</button>
+          </div>
+          <p class="project-results" role="status" aria-live="polite">5 projects</p>
+        </div>
 
         <div class="projects-grid">
 
-          <article class="project-card glass-card reveal" data-reveal="fade-up" data-tilt>
+          <article class="project-card reveal" data-reveal="fade-up" data-project-category="fintech">
+            <div class="project-sketch sketch-payments" aria-hidden="true"><span class="sketch-caption">01 / Integration sketch</span><div class="payment-map"><svg viewBox="0 0 600 260" fill="none"><path class="route-base" d="M90 70L300 130L510 70M300 130V220"/><path class="route-signal" d="M90 70L300 130L510 70M300 130V220"/><circle cx="90" cy="70" r="7"/><circle cx="510" cy="70" r="7"/><circle cx="300" cy="220" r="7"/></svg><span class="map-node node-ke">Kenya</span><strong class="map-hub">PAPSS<span>Cross-border payments</span></strong><span class="map-node node-ng">Nigeria</span><span class="map-node node-zw">Zimbabwe</span></div><span class="sketch-foot">Connecting banks across borders</span></div>
+            <div class="project-info">
             <div class="project-card-top">
               <span class="project-tag">Fintech · Cross-Border Payments</span>
             </div>
@@ -464,9 +754,13 @@
             <ul class="project-stack">
               <li>PAPSS</li><li><img src="assets/icons/dotnetcore.svg" alt="" width="16" height="16" loading="lazy" />ASP.NET Core</li><li>Production Migration</li>
             </ul>
+          
+            </div>
           </article>
 
-          <article class="project-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="60" data-tilt>
+          <article class="project-card reveal" data-reveal="fade-up" data-project-category="fintech">
+            <div class="project-sketch sketch-agents" aria-hidden="true"><span class="sketch-caption">02 / Workflow sketch</span><div class="agent-flow"><span>Super-Agent Portal</span><div class="flow-line"></div><div class="flow-steps"><b>Onboard</b><b>Transact</b><b>Settle</b></div><small>Admin · Reporting · Monitoring</small></div><span class="sketch-foot">Salam Kalpeh</span></div>
+            <div class="project-info">
             <div class="project-card-top">
               <span class="project-tag">Agent Banking</span>
             </div>
@@ -483,9 +777,13 @@
             <ul class="project-stack">
               <li><img src="assets/icons/dotnetcore.svg" alt="" width="16" height="16" loading="lazy" />ASP.NET MVC</li><li><img src="assets/icons/microsoftsqlserver.svg" alt="" width="16" height="16" loading="lazy" />SQL Server</li><li>Agent Onboarding</li>
             </ul>
+          
+            </div>
           </article>
 
-          <article class="project-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="120" data-tilt>
+          <article class="project-card reveal" data-reveal="fade-up" data-project-category="web">
+            <div class="project-sketch sketch-web" aria-hidden="true"><span class="sketch-caption">03 / Website illustration</span><div class="web-window"><div class="window-bar"><i></i><i></i><i></i><span>cifghana.org</span></div><div class="web-canvas"><span>CIF GHANA</span><b>Inclusive<br /><em>finance.</em></b><div class="web-lines"></div></div></div><span class="sketch-foot">Content · Design · Development</span></div>
+            <div class="project-info">
             <div class="project-card-top">
               <span class="project-tag">Website · Non-Fintech</span>
             </div>
@@ -499,9 +797,13 @@
             <ul class="project-stack">
               <li>Custom CMS</li><li>Responsive UI</li><li>Landing Pages</li>
             </ul>
+          
+            </div>
           </article>
 
-          <article class="project-card glass-card reveal" data-reveal="fade-up" data-tilt>
+          <article class="project-card reveal" data-reveal="fade-up" data-project-category="internal">
+            <div class="project-sketch sketch-data" aria-hidden="true"><span class="sketch-caption">04 / Data sketch</span><div class="data-tables"><div><b>companies</b><span>id <i>key</i></span><span>name</span><span>products ↗</span></div><div><b>products</b><span>id <i>key</i></span><span>company_id</span><span>name</span></div></div><span class="sketch-foot">Role-based access · Audit trails</span></div>
+            <div class="project-info">
             <div class="project-card-top">
               <span class="project-tag">Enterprise Tooling</span>
             </div>
@@ -515,22 +817,23 @@
             <ul class="project-stack">
               <li><img src="assets/icons/dotnetcore.svg" alt="" width="16" height="16" loading="lazy" />.NET 8</li><li><img src="assets/icons/blazor.svg" alt="" width="16" height="16" loading="lazy" />Blazor</li><li><img src="assets/icons/dotnetcore.svg" alt="" width="16" height="16" loading="lazy" />EF Core</li><li><img src="assets/icons/microsoftsqlserver.svg" alt="" width="16" height="16" loading="lazy" />SQL Server</li>
             </ul>
+          
+            </div>
           </article>
 
-          <article class="project-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="60" data-tilt>
-            <div class="project-card-top">
-              <span class="project-tag">Transaction Portal</span>
+          <article class="project-card reveal" data-reveal="fade-up" data-project-category="fintech">
+            <div class="project-sketch sketch-available" aria-hidden="true">
+              <span class="sketch-caption">05 / myAvailable · Site preview</span>
+              <div class="available-preview"><img src="assets/projects/myavailable.webp" alt="" width="1280" height="850" loading="lazy" decoding="async" /></div>
+              <span class="sketch-foot">Your money, made clear.</span>
             </div>
-            <h3>Transaction Portal &amp; Corporate Website</h3>
-            <p class="project-org"><span class="org-logo org-logo--icon" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="3" y1="13" x2="21" y2="13"/></svg></span><span>Client Engagement</span></p>
-            <p>
-              A modern transaction portal built with reactive forms and a modular architecture,
-              paired with a responsive corporate website to support the client's public-facing
-              presence.
-            </p>
-            <ul class="project-stack">
-              <li><img src="assets/icons/angular.svg" alt="" width="16" height="16" loading="lazy" />Angular</li><li>REST APIs</li><li><img src="assets/icons/bootstrap.svg" alt="" width="16" height="16" loading="lazy" />Bootstrap</li>
-            </ul>
+            <div class="project-info">
+              <div class="project-card-top"><span class="project-tag">Fintech · Personal finance</span></div>
+              <h3>myAvailable — Make sense of your money</h3>
+              <p class="project-org"><a href="https://myavailable.netlify.app/" target="_blank" rel="noopener noreferrer">Visit myAvailable</a></p>
+              <p>A personal finance app that turns supported MoMo and bank statements into a clear picture of your money. Import PDF or CSV statements to understand total inflows, outflows, fees and spending patterns, with transactions you can review and categorise.</p>
+              <ul class="project-stack"><li>Statement analysis</li><li>MoMo &amp; bank</li><li>PDF / CSV</li></ul>
+            </div>
           </article>
 
         </div>
@@ -538,103 +841,171 @@
     </section>
 
     <!-- ===== Education ===== -->
-    <section class="section" id="education" aria-labelledby="education-heading">
+    <section class="section education" id="education" aria-labelledby="education-heading" data-header-dark>
       <div class="section-inner">
-        <p class="section-kicker reveal" data-reveal="fade-up">Foundation</p>
-        <h2 class="section-title reveal" data-reveal="fade-up" id="education-heading">Education</h2>
-
-        <div class="education-card glass-card reveal" data-reveal="fade-up">
-          <img class="education-logo" src="assets/logos/university-of-ghana.svg" alt="University of Ghana crest" width="72" height="86" loading="lazy" />
-          <div class="education-body">
-          <div class="education-head">
-            <h3>Bachelor of Science in Computer Engineering</h3>
-            <span class="timeline-date">Graduated 2024</span>
+        <header class="education-heading">
+          <p class="about-kicker reveal" data-reveal="fade-up"><span>06</span> Education</p>
+          <h2 class="education-title reveal" data-reveal="fade-up" id="education-heading">The Legon <em>chapter.</em></h2>
+        </header>
+        <div class="education-feature">
+          <div class="grad-gallery grad-gallery--album reveal" data-reveal="fade-up" data-gallery-title="Legon graduation">
+            <span class="grad-year" aria-hidden="true">’24</span>
+            <figure class="grad-print grad-print--main">
+              <a href="assets/photos/grad2.JPEG" data-grad-photo="0" target="_blank" rel="noopener" aria-label="Enlarge university of ghana, photo 1">
+                <img src="assets/education/grad2.webp" alt="Mac-Arthur in a suit and University of Ghana graduation stole, adjusting his sunglasses" width="1200" height="1800" loading="lazy" decoding="async" />
+                <span class="grad-expand" aria-hidden="true">↗</span>
+              </a>
+              <figcaption><span>University of Ghana</span><span>01 / 03</span></figcaption>
+            </figure>
+            <figure class="grad-print grad-print--detail">
+              <a href="assets/photos/grad4.JPEG" data-grad-photo="1" target="_blank" rel="noopener" aria-label="Enlarge class of ’24, photo 2">
+                <img src="assets/education/grad4.webp" alt="Full-length graduation portrait of Mac-Arthur wearing a suit and University of Ghana stole" width="1107" height="1800" loading="lazy" decoding="async" />
+                <span class="grad-expand" aria-hidden="true">↗</span>
+              </a>
+              <figcaption><span>Class of ’24</span><span>02 / 03</span></figcaption>
+            </figure>
+            <figure class="grad-print grad-print--extra">
+              <a href="assets/photos/grad5.JPEG" data-grad-photo="2" target="_blank" rel="noopener" aria-label="Enlarge legon memories, photo 3">
+                <img src="assets/education/grad5.webp" alt="Mac-Arthur in graduation robes beside a guest in a yellow dress, in front of the University of Ghana tower" width="1200" height="1800" loading="lazy" decoding="async" />
+                <span class="grad-expand" aria-hidden="true">↗</span>
+              </a>
+              <figcaption><span>Legon memories</span><span>03 / 03</span></figcaption>
+            </figure>
+            <span class="grad-handwriting" aria-hidden="true">a chapter worth keeping.</span>
           </div>
-          <p class="education-org">University of Ghana — Legon, Accra, Ghana</p>
-          <p class="education-coursework">
-            <strong>Relevant coursework:</strong> Data Structures &amp; Algorithms, Software
-            Engineering, Computer Networks, Operating Systems, Artificial Intelligence,
-            Database Systems.
-          </p>
+          <div class="education-record reveal" data-reveal="fade-up" data-reveal-delay="100">
+            <div class="education-record-top">
+              <img class="education-logo" src="assets/logos/university-of-ghana.svg" alt="University of Ghana crest" width="72" height="86" loading="lazy" />
+              <span class="education-date">Graduated<br /><b>2024</b></span>
+            </div>
+            <p class="education-location">Legon · Accra, Ghana</p>
+            <h3>BSc Computer<br />Engineering</h3>
+            <p class="education-org">University of Ghana</p>
+            <div class="education-coursework">
+              <h4>// the foundations</h4>
+              <ul>
+                <li>Data Structures &amp; Algorithms</li>
+                <li>Software Engineering</li>
+                <li>Computer Networks</li>
+                <li>Operating Systems</li>
+                <li>Artificial Intelligence</li>
+                <li>Database Systems</li>
+              </ul>
+            </div>
+            <p class="education-degree">Bachelor of Science <span aria-hidden="true">↗</span></p>
           </div>
         </div>
-
-        <div class="education-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="80">
-          <img class="education-logo" src="assets/logos/st-augustines-college.jpg" alt="St. Augustine's College crest" width="72" height="89" loading="lazy" />
-          <div class="education-body">
-          <div class="education-head">
-            <h3>High School Certificate — General Science</h3>
-            <span class="timeline-date">2017 — 2020</span>
+        <article class="education-feature education-feature--school" aria-labelledby="augusco-heading">
+          <div class="education-record education-record--school reveal" data-reveal="fade-up">
+            <div class="education-record-top">
+              <img class="education-logo" src="assets/logos/st-augustines-college.jpg" alt="St. Augustine's College crest" width="72" height="89" loading="lazy" />
+              <span class="education-date">School years<br /><b>2017 — 2020</b></span>
+            </div>
+            <p class="education-location">Before Legon · Cape Coast, Ghana</p>
+            <h3 id="augusco-heading">Saint Augustine’s<br /><em>College.</em></h3>
+            <p class="education-org">High School Certificate · General Science</p>
+            <p class="education-school-note">The Augusco days.</p>
+            <p class="education-degree">Science, school days &amp; familiar faces <span aria-hidden="true">↗</span></p>
           </div>
-          <p class="education-org">Saint Augustine's College — Cape Coast, Ghana</p>
+          <div class="grad-gallery grad-gallery--school reveal" data-reveal="fade-up" data-gallery-title="The Augusco days">
+            <span class="grad-year" aria-hidden="true">’20</span>
+            <figure class="grad-print grad-print--main">
+              <a href="assets/photos/augusco1.jpg" data-grad-photo="0" target="_blank" rel="noopener" aria-label="Enlarge augusco days, photo 1">
+                <img src="assets/education/augusco1.webp" alt="Three students in green-and-white Saint Augustine’s College shirts on a palm-lined campus path" width="1206" height="1371" loading="lazy" decoding="async" />
+                <span class="grad-expand" aria-hidden="true">↗</span>
+              </a>
+              <figcaption><span>Augusco days</span><span>01 / 03</span></figcaption>
+            </figure>
+            <figure class="grad-print grad-print--detail">
+              <a href="assets/photos/augusco2.jpg" data-grad-photo="1" target="_blank" rel="noopener" aria-label="Enlarge cape coast, photo 2">
+                <img src="assets/education/augusco2.webp" alt="Three Saint Augustine’s College students standing together beneath the campus palm trees" width="1206" height="1461" loading="lazy" decoding="async" />
+                <span class="grad-expand" aria-hidden="true">↗</span>
+              </a>
+              <figcaption><span>Cape Coast</span><span>02 / 03</span></figcaption>
+            </figure>
+            <figure class="grad-print grad-print--small">
+              <a href="assets/photos/augusco3.jpg" data-grad-photo="2" target="_blank" rel="noopener" aria-label="Enlarge from the album, photo 3">
+                <img src="assets/education/augusco3.webp" alt="Two students in green-and-white school shirts sitting together near a school building" width="1206" height="1069" loading="lazy" decoding="async" />
+                <span class="grad-expand" aria-hidden="true">↗</span>
+              </a>
+              <figcaption><span>From the album</span><span>03 / 03</span></figcaption>
+            </figure>
+            <span class="grad-handwriting" aria-hidden="true">before the code, the memories.</span>
           </div>
-        </div>
+        </article>
       </div>
+      <dialog class="grad-dialog" aria-label="Education photo albums">
+        <div class="grad-dialog-bar"><span class="grad-dialog-caption" aria-live="polite">Legon graduation · 01 / 03</span><button type="button" class="grad-close" autofocus aria-label="Close education photo">Close ×</button></div>
+        <img class="grad-dialog-image" src="assets/education/grad2.webp" alt="Graduation portrait" width="1200" height="1800" loading="lazy" />
+        <div class="grad-dialog-controls"><button type="button" class="grad-prev" aria-label="Previous education photo">← Previous</button><button type="button" class="grad-next" aria-label="Next education photo">Next →</button></div>
+      </dialog>
     </section>
 
     <!-- ===== Achievements ===== -->
-    <section class="section" id="achievements" aria-labelledby="achievements-heading">
+    <section class="section achievements" id="achievements" aria-labelledby="achievements-heading">
       <div class="section-inner">
-        <p class="section-kicker reveal" data-reveal="fade-up">Impact</p>
-        <h2 class="section-title reveal" data-reveal="fade-up" id="achievements-heading">Achievements</h2>
-
+        <header class="achievements-heading">
+          <div>
+            <p class="about-kicker reveal" data-reveal="fade-up"><span>07</span> Achievements</p>
+            <h2 class="achievements-title reveal" data-reveal="fade-up" id="achievements-heading">A few <em>milestones.</em></h2>
+          </div>
+          <p class="achievements-intro reveal" data-reveal="fade-up">Growing with the team, working across borders, and helping get software into people’s hands.</p>
+        </header>
         <div class="achievements-grid">
-          <div class="achievement-card glass-card reveal" data-reveal="fade-up" data-tilt>
-            <div class="achievement-head"><div class="achievement-number">01</div><span class="achievement-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><polyline points="5 12 12 5 19 12"/></svg></span></div>
-            <p>Promoted from National Service to full-time Software Developer based on measurable technical impact.</p>
-          </div>
-          <div class="achievement-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="60" data-tilt>
-            <div class="achievement-head"><div class="achievement-number">02</div><span class="achievement-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span></div>
-            <p>Contributed to fintech deployments spanning multiple African markets — Kenya, Zimbabwe, Nigeria, The Gambia, and Ghana.</p>
-            <div class="flag-row flag-row--lg"><img class="flag" src="assets/flags/ke.svg" alt="Kenya" title="Kenya" width="20" height="14" loading="lazy" /><img class="flag" src="assets/flags/zw.svg" alt="Zimbabwe" title="Zimbabwe" width="20" height="14" loading="lazy" /><img class="flag" src="assets/flags/ng.svg" alt="Nigeria" title="Nigeria" width="20" height="14" loading="lazy" /><img class="flag" src="assets/flags/gm.svg" alt="The Gambia" title="The Gambia" width="20" height="14" loading="lazy" /><img class="flag" src="assets/flags/gh.svg" alt="Ghana" title="Ghana" width="20" height="14" loading="lazy" /></div>
-          </div>
-          <div class="achievement-card glass-card reveal" data-reveal="fade-up" data-reveal-delay="120" data-tilt>
-            <div class="achievement-head"><div class="achievement-number">03</div><span class="achievement-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span></div>
-            <p>Delivered multiple production platforms — cross-border payment integrations, agent-banking portals, and enterprise web applications — from build through deployment.</p>
-          </div>
+          <article class="achievement-card reveal" data-reveal="fade-up">
+            <p class="achievement-label"><span>01 / Career</span><span aria-hidden="true">↗</span></p>
+            <div class="achievement-art achievement-rise" aria-hidden="true"><span>National<br />Service</span><svg viewBox="0 0 140 100" fill="none"><path d="M10 85H45V55H80V20H125M103 3L125 20L103 37" /></svg></div>
+            <h3>A full-time role.</h3>
+            <p class="achievement-copy">Moved from National Service into a full-time Software Developer role at Oakwood Advansio, building on my contributions to the team.</p>
+            <span class="achievement-foot">Learning → contributing → growing</span>
+          </article>
+          <article class="achievement-card achievement-card--markets reveal" data-reveal="fade-up" data-reveal-delay="100">
+            <p class="achievement-label"><span>02 / Across borders</span><span aria-hidden="true">↗</span></p>
+            <div class="achievement-art achievement-market-number">6<span>+</span></div>
+            <h3>African markets.</h3>
+            <p class="achievement-copy">Contributed to fintech deployments and bank onboarding across the continent.</p>
+            <ul class="achievement-countries" aria-label="Markets supported"><li><img src="assets/flags/ng.svg" alt="" width="24" height="16" loading="lazy" /><span>Nigeria</span></li><li><img src="assets/flags/zm.svg" alt="" width="24" height="16" loading="lazy" /><span>Zambia</span></li><li><img src="assets/flags/zw.svg" alt="" width="24" height="16" loading="lazy" /><span>Zimbabwe</span></li><li><img src="assets/flags/lr.svg" alt="" width="24" height="16" loading="lazy" /><span>Liberia</span></li><li><img src="assets/flags/ke.svg" alt="" width="24" height="16" loading="lazy" /><span>Kenya</span></li><li><img src="assets/flags/ug.svg" alt="" width="24" height="16" loading="lazy" /><span>Uganda</span></li><li><img src="assets/flags/gh.svg" alt="" width="24" height="16" loading="lazy" /><span>Ghana</span></li></ul>
+          </article>
+          <article class="achievement-card reveal" data-reveal="fade-up" data-reveal-delay="200">
+            <p class="achievement-label"><span>03 / Delivery</span><span aria-hidden="true">↗</span></p>
+            <div class="achievement-art achievement-shipped" aria-hidden="true"><svg viewBox="0 0 100 100" fill="none"><circle cx="50" cy="50" r="43"/><path d="M27 50L44 67L75 33"/></svg><span>build<br /><b>→ production</b></span></div>
+            <h3>Into everyday use.</h3>
+            <p class="achievement-copy">Helped deliver cross-border payment integrations, agent banking portals and enterprise web applications, from development through deployment.</p>
+            <span class="achievement-foot">Payments / banking / web apps</span>
+          </article>
         </div>
       </div>
     </section>
 
     <!-- ===== Contact ===== -->
-    <section class="section section--contact" id="contact" aria-labelledby="contact-heading">
+    <section class="section section--contact" id="contact" aria-labelledby="contact-heading" data-header-dark>
       <div class="section-inner">
-        <div class="contact-card glass-card reveal" data-reveal="fade-up">
-          <p class="section-kicker">Let's talk</p>
-          <h2 class="section-title" id="contact-heading">Building something in fintech? Let's build it right.</h2>
-          <p class="section-lede">
-            Open to full-stack engineering roles, freelance collaborations, and conversations
-            about secure payment infrastructure. I typically reply within a day.
-          </p>
-
-          <div class="contact-links">
-            <a class="contact-link" href="mailto:macarthur83@yahoo.com">
-              <span class="contact-link-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><polyline points="3 7 12 13 21 7"/></svg></span>
-              <span class="contact-link-label">Email</span>
-              <span class="contact-link-value">macarthur83@yahoo.com</span>
-            </a>
-            <a class="contact-link" href="tel:+233257307230">
-              <span class="contact-link-icon" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span>
-              <span class="contact-link-label">Phone</span>
-              <span class="contact-link-value">+233 25 730 7230</span>
-            </a>
-            <a class="contact-link" href="https://github.com/Mac-Arthur" target="_blank" rel="noopener noreferrer">
-              <span class="contact-link-icon" aria-hidden="true"><img src="assets/icons/github.svg" alt="" width="22" height="22" loading="lazy" /></span>
-              <span class="contact-link-label">GitHub</span>
-              <span class="contact-link-value">github.com/Mac-Arthur</span>
-            </a>
-            <a class="contact-link" href="https://www.linkedin.com/in/immanuel-justice-mac-arthur-506bb4296" target="_blank" rel="noopener noreferrer">
-              <span class="contact-link-icon" aria-hidden="true"><img src="assets/icons/linkedin.svg" alt="" width="22" height="22" loading="lazy" /></span>
-              <span class="contact-link-label">LinkedIn</span>
-              <span class="contact-link-value">Immanuel Justice Mac-Arthur</span>
-            </a>
+        <div class="contact-topline reveal" data-reveal="fade-up">
+          <p class="about-kicker"><span>08</span> Contact</p>
+          <p class="contact-availability"><i aria-hidden="true"></i> Open to new projects</p>
+        </div>
+        <div class="contact-heading reveal" data-reveal="fade-up">
+          <h2 id="contact-heading">Good things start<br />with <em>hello.</em></h2>
+          <p>Have an app in mind, a website to build, or a role that sounds like a fit? Let’s talk.</p>
+        </div>
+        <div class="contact-email-row reveal" data-reveal="fade-up">
+          <a class="contact-email" href="mailto:macarthur83@yahoo.com"><span>macarthur83@yahoo.com</span><span class="contact-email-arrow" aria-hidden="true">↗</span></a>
+          <button class="contact-copy" type="button" hidden aria-label="Copy email address">Copy email <span aria-hidden="true">⧉</span></button>
+          <p class="contact-copy-status" role="status" aria-live="polite"></p>
+        </div>
+        <div class="contact-bottom">
+          <div class="contact-note reveal" data-reveal="fade-up">
+            <span class="contact-note-label">// based in</span>
+            <p>Accra, Ghana.<br /><em>Let’s see what we can build.</em></p>
+            <a href="assets/Immanuel-Mac-Arthur-CV.pdf" class="contact-cv btn-ripple" download><span>Download CV</span><span aria-hidden="true">↓</span></a>
           </div>
-
-          <div class="contact-actions">
-            <a href="mailto:macarthur83@yahoo.com" class="btn btn-lime btn-ripple"><span>Say Hello</span></a>
-            <a href="assets/Immanuel-Mac-Arthur-CV.pdf" class="btn btn-secondary btn-ripple" download><span>Download CV</span></a>
+          <div class="contact-links reveal" data-reveal="fade-up" data-reveal-delay="100">
+            <a class="contact-link" href="tel:+233257307230"><span class="contact-link-label">Phone</span><span class="contact-link-value">+233 25 730 7230</span><span class="contact-link-arrow" aria-hidden="true">↗</span></a>
+            <a class="contact-link" href="https://github.com/Mac-Arthur" target="_blank" rel="noopener noreferrer"><span class="contact-link-label">GitHub</span><span class="contact-link-value">Mac-Arthur</span><span class="contact-link-arrow" aria-hidden="true">↗</span></a>
+            <a class="contact-link" href="https://www.linkedin.com/in/immanuel-justice-mac-arthur-506bb4296" target="_blank" rel="noopener noreferrer"><span class="contact-link-label">LinkedIn</span><span class="contact-link-value">Immanuel Justice Mac-Arthur</span><span class="contact-link-arrow" aria-hidden="true">↗</span></a>
           </div>
         </div>
+        <div class="contact-signoff reveal" data-reveal="fade-up" aria-hidden="true"><span>Code</span><i>×</i><span>Culture</span><span class="contact-signoff-note">same guy.</span></div>
       </div>
     </section>
 
@@ -643,7 +1014,7 @@
   <!-- ===== Footer ===== -->
   <footer class="site-footer">
     <div class="footer-inner">
-      <p>© <span id="year"></span> Immanuel Justice Mac-Arthur. Built with pure HTML, CSS &amp; JavaScript.</p>
+      <p>© <span id="year"></span> Immanuel Justice Mac-Arthur. Made in Accra.</p>
       <div class="footer-links">
         <a href="https://github.com/Mac-Arthur" target="_blank" rel="noopener noreferrer">GitHub</a>
         <a href="https://www.linkedin.com/in/immanuel-justice-mac-arthur-506bb4296" target="_blank" rel="noopener noreferrer">LinkedIn</a>
