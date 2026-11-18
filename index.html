@@ -7,7 +7,7 @@
   <meta name="description" content="Immanuel Justice Mac-Arthur is a full-stack software engineer specializing in secure, high-availability fintech platforms — cross-border payment integrations and agent-banking systems for banks and microfinance institutions across Africa." />
   <meta name="author" content="Immanuel Justice Mac-Arthur" />
   <meta name="keywords" content="Immanuel Mac-Arthur, Software Engineer, Full-Stack Developer, Fintech, .NET, C#, Angular, PAPSS, Accra Ghana" />
-  <meta name="theme-color" content="#ffffff" />
+  <meta name="theme-color" content="#0b0b0a" />
   <meta name="color-scheme" content="light" />
 
   <!-- Open Graph -->
@@ -30,9 +30,12 @@
   <!-- Preconnect for faster font load -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="preload" as="image" href="assets/hero/Hero.jpeg" fetchpriority="high" />
 
   <link rel="stylesheet" href="style.css" />
+  <script>document.documentElement.classList.add('js');</script>
 
   <!-- Structured data for SEO -->
   <script type="application/ld+json">
@@ -90,11 +93,11 @@
       </ul>
 
       <div class="nav-actions">
-        <a href="#contact" class="nav-link nav-link--cta">
+        <a href="#contact" class="nav-link nav-link--cta" aria-label="Contact">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M4 4h16v12H7l-3 3V4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
           </svg>
-          Contact
+          <span class="nav-cta-label">Contact</span>
         </a>
 
         <button type="button" class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Toggle navigation menu">
@@ -108,68 +111,145 @@
 
   <main id="main">
 
-    <!-- ===== Hero ===== -->
+    <!-- ===== Hero — "Guyman Engineer" =====
+         Layer order (back → front): photo · shade · wordmark · cut-out subject
+         · devtools overlay · copy. The photo, the cut-out and the overlay share
+         one "frame" geometry (an object-fit: cover clone built from container
+         units), so they stay pixel-aligned while the wordmark slides between
+         them — that's what puts the name *behind* him. -->
     <section class="hero" id="hero" aria-label="Introduction">
-      <div class="hero-inner">
-        <div class="hero-card">
+      <div class="hero-media" aria-hidden="true">
 
-        
-
-          <div class="hero-copy">
-            <p class="hero-eyebrow reveal" data-reveal="fade-up">
-              Hey <span class="hero-wave" aria-hidden="true">👋</span> I'm Mac-Arthur
-            </p>
-
-            <h1 class="hero-heading reveal" data-reveal="fade-up" data-reveal-delay="80">
-              Software Engineer &amp;<br />Full-Stack Developer
-            </h1>
-
-            <a href="#projects" class="btn btn-lime btn-ripple reveal" data-reveal="fade-up" data-reveal-delay="160">
-              <span>View Projects</span>
-            </a>
+        <div class="hero-frame hero-frame--bg">
+          <div class="hero-reveal">
+            <img class="hero-bg"
+              src="assets/hero/Hero.jpeg"
+              width="3024" height="4032" alt=""
+              fetchpriority="high" decoding="async" />
           </div>
-
-          <figure class="hero-portrait">
-            <img
-              src="assets/im.png"
-              width="3435" height="5153"
-              alt="Portrait of Immanuel Justice Mac-Arthur"
-              decoding="async"
-              fetchpriority="high"
-            />
-          </figure>
-
-          <div class="hero-bottom">
-            <p class="hero-blurb reveal" data-reveal="fade-up" data-reveal-delay="220">
-              Full-stack software engineer based in Accra, Ghana — building secure,
-              high-availability fintech platforms for banks and microfinance
-              institutions across Africa.
-            </p>
-
-            <dl class="hero-stats reveal" data-reveal="fade-up" data-reveal-delay="280">
-              <div class="hero-stat">
-                <dt>6+</dt>
-                <dd>African countries shipped to</dd>
-              </div>
-              <div class="hero-stat">
-                <dt>2+</dt>
-                <dd>Years in production fintech</dd>
-              </div>
-              <div class="hero-stat">
-                <dt>6+</dt>
-                <dd>Production platforms delivered</dd>
-              </div>
-            </dl>
-          </div>
-
         </div>
 
-        <a href="#about" class="scroll-cue" aria-label="Scroll to About section">
-          <span class="scroll-cue-dot" aria-hidden="true"></span>
-          <span>Scroll down</span>
-        </a>
+        <div class="hero-shade"></div>
+        <div class="hero-spotlight"></div>
+
+        <div class="hero-wordmark">
+          <span class="hero-wordmark-line"><span style="--i:0">M</span><span style="--i:1">A</span><span style="--i:2">C</span><span style="--i:3">-</span></span><span class="hero-wordmark-line"><span style="--i:4">A</span><span style="--i:5">R</span><span style="--i:6">T</span><span style="--i:7">H</span><span style="--i:8">U</span><span style="--i:9">R</span></span>
+        </div>
+
+        <div class="hero-frame hero-frame--subject">
+          <div class="hero-reveal">
+            <!-- Same JPEG as the background, drawn through an alpha mask of the
+                 subject — no second re-encoded copy, so the detail is identical.
+                 (Inline SVG mask rather than CSS mask-image, which browsers
+                 refuse to load from file:// previews.) -->
+            <svg class="hero-subject" viewBox="0 0 3024 4032" preserveAspectRatio="xMidYMid slice" focusable="false">
+              <defs>
+                <mask id="hero-subject-mask" maskUnits="userSpaceOnUse" x="0" y="0" width="3024" height="4032" style="mask-type: alpha">
+                  <image href="assets/hero/hero-mask.png" width="3024" height="4032" />
+                </mask>
+              </defs>
+              <image href="assets/hero/Hero.jpeg" width="3024" height="4032" mask="url(#hero-subject-mask)" />
+            </svg>
+          </div>
+        </div>
+
+        <div class="hero-frame hero-frame--ui">
+          <div class="hero-reveal">
+            <div class="hero-inspect">
+              <span class="hero-inspect-corner"></span><span class="hero-inspect-corner"></span><span class="hero-inspect-corner"></span><span class="hero-inspect-corner"></span>
+              <span class="hero-inspect-tag"><b>div</b>.guyman</span>
+              <span class="hero-inspect-size">fit: 100%</span>
+            </div>
+            <div class="hero-toast">
+              <span class="hero-toast-icon"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg></span>
+              <span class="hero-toast-body"><b>Deployed to prod</b><span>main · 2s ago · from the hangout</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-fade"></div>
+        <div class="hero-grain"></div>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-topline" data-intro style="--d:0">
+          <p class="hero-status"><span class="hero-status-dot" aria-hidden="true"></span>Open to new projects</p>
+          <p class="hero-clock">Accra, GH <time id="hero-clock">--:--</time> GMT</p>
+        </div>
+
+        <div class="hero-intro">
+          <p class="hero-caption" data-intro style="--d:1">
+            <span class="hero-caption-brace" aria-hidden="true">{</span><span class="hero-caption-text" data-scramble>Guyman Engineer</span><span class="hero-caption-brace" aria-hidden="true">}</span>
+          </p>
+
+          <h1 class="hero-title" data-intro style="--d:2">
+            <span class="visually-hidden">Immanuel Justice Mac-Arthur, </span>
+            <span class="hero-title-line"><span>Engineer</span> <span>by trade.</span></span>
+            <span class="hero-title-line"><span><em class="hero-title-accent">Guyman<svg class="hero-scribble" viewBox="0 0 220 28" preserveAspectRatio="none" aria-hidden="true"><path d="M4 18 C 40 8, 92 6, 140 10 S 200 16, 216 8 M 18 24 C 70 17, 130 16, 196 20" /></svg></em></span> <span>by nature.</span></span>
+          </h1>
+
+          <p class="hero-now" data-intro style="--d:3">
+            <span class="hero-now-prompt" aria-hidden="true">&gt; now:</span>
+            <span class="hero-now-text" id="hero-now">shipping fintech across Africa</span><span class="hero-now-caret" aria-hidden="true"></span>
+          </p>
+
+          <div class="hero-ctas" data-intro style="--d:4">
+            <a href="#projects" class="btn btn-lime btn-ripple hero-cta" data-magnetic>
+              <span>See the work</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="#about" class="btn btn-ripple hero-cta hero-cta--ghost" data-magnetic>
+              <span>Off the clock</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-side" aria-label="Off the clock">
+          <div class="hero-polaroids" data-intro style="--d:3">
+            <figure class="polaroid" style="--r:-9deg; --x:-38%; --y:6%">
+              <picture><source type="image/avif" srcset="assets/hero/life-dope1.avif" /><img src="assets/hero/life-dope1.webp" width="840" height="1050" alt="Mac-Arthur and a friend at a neon-lit party" loading="lazy" decoding="async" /></picture>
+              <figcaption>after hours</figcaption>
+            </figure>
+            <figure class="polaroid" style="--r:7deg; --x:34%; --y:2%">
+              <picture><source type="image/avif" srcset="assets/hero/life-grad2.avif" /><img src="assets/hero/life-grad2.webp" width="840" height="1050" alt="Mac-Arthur in a kente graduation stole, BSc Computer Engineering 2024" loading="lazy" decoding="async" /></picture>
+              <figcaption>BSc. '24 — got myself</figcaption>
+            </figure>
+            <figure class="polaroid" style="--r:-2deg; --x:0%; --y:0%">
+              <picture><source type="image/avif" srcset="assets/hero/life-dope3.avif" /><img src="assets/hero/life-dope3.webp" width="840" height="1050" alt="Mac-Arthur posing in a camo shirt and cap" loading="lazy" decoding="async" /></picture>
+              <figcaption>drip check ✓</figcaption>
+            </figure>
+
+            <div class="hero-badge" aria-hidden="true">
+              <svg class="hero-badge-ring" viewBox="0 0 200 200">
+                <defs><path id="hero-badge-path" d="M100,100 m-76,0 a76,76 0 1,1 152,0 a76,76 0 1,1 -152,0" /></defs>
+                <text><textPath href="#hero-badge-path" textLength="474" lengthAdjust="spacing">GUYMAN ENGINEER ✦ CODE × CULTURE ✦ ACCRA ✦ </textPath></text>
+              </svg>
+              <svg class="hero-badge-star" viewBox="0 0 24 24"><path d="M12 0c.6 5.6 2.2 9.1 4.4 10.6C18.6 12 21 12 24 12c-3 0-5.4 0-7.6 1.4C14.2 14.9 12.6 18.4 12 24c-.6-5.6-2.2-9.1-4.4-10.6C5.4 12 3 12 0 12c3 0 5.4 0 7.6-1.4C9.8 9.1 11.4 5.6 12 0z"/></svg>
+            </div>
+          </div>
+
+          <p class="hero-blurb" data-intro style="--d:5">
+            By day I build secure payment rails for banks across Africa.
+            After hours it's fits, art, music and good people. Both get my full attention.
+          </p>
+        </aside>
       </div>
     </section>
+
+    <!-- Crossing tapes: culture × code. Purely decorative. -->
+    <div class="hero-tape" aria-hidden="true">
+      <div class="tape tape--code">
+        <div class="tape-track">
+          <span>C# · .NET · ANGULAR · BLAZOR · SQL SERVER · POSTGRES · DOCKER · AWS · NGINX · LINUX · GIT · </span><span>C# · .NET · ANGULAR · BLAZOR · SQL SERVER · POSTGRES · DOCKER · AWS · NGINX · LINUX · GIT · </span>
+        </div>
+      </div>
+      <div class="tape tape--culture">
+        <div class="tape-track">
+          <span>Software Engineer <i></i> Guyman <i></i> Fashion <i></i> Arts <i></i> Nightlife <i></i> Fintech <i></i> Accra <i></i> </span><span>Software Engineer <i></i> Guyman <i></i> Fashion <i></i> Arts <i></i> Nightlife <i></i> Fintech <i></i> Accra <i></i> </span>
+        </div>
+      </div>
+    </div>
 
     <!-- ===== About ===== -->
     <section class="section" id="about" aria-labelledby="about-heading">
