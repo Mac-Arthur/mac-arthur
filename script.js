@@ -527,6 +527,7 @@
     var photo = about.querySelector('.about-photo');
     var cycleTimer = null;
     var userTook = false;
+    var resumeTimer = null;
     var visualInView = false;
     var CYCLE = 5200;
 
@@ -570,15 +571,20 @@
           userTook = true;
           stopCycle();
           setMode(btn.getAttribute('data-set-mode'));
+          /* hand control back to the auto-cycle after a quiet spell */
+          clearTimeout(resumeTimer);
+          resumeTimer = setTimeout(function () { userTook = false; startCycle(); }, 12000);
         });
       });
 
       var visual = about.querySelector('.about-visual');
       if (hasIO && visual) {
         new IntersectionObserver(function (entries) {
-          visualInView = entries[0].isIntersecting && entries[0].intersectionRatio >= 0.55;
+          var e = entries[entries.length - 1];
+          /* a tall visual on a short screen can never reach 55% of itself, so also accept "fills half the viewport" */
+          visualInView = e.isIntersecting && (e.intersectionRatio >= 0.4 || e.intersectionRect.height >= window.innerHeight * 0.5);
           if (visualInView) startCycle(); else stopCycle();
-        }, { threshold: 0.55 }).observe(visual);
+        }, { threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.8, 1] }).observe(visual);
       }
       document.addEventListener('visibilitychange', function () {
         if (document.hidden) stopCycle(); else startCycle();
@@ -768,6 +774,7 @@
     var lifeChapter = null;
     var lifeRaf = null;
     var lifeNear = false;
+    var lifeHeight = 0;
 
     var setChapter = function (name) {
       if (!name || name === lifeChapter) return;
@@ -787,10 +794,23 @@
       return last.offsetLeft + last.offsetWidth + parseFloat(getComputedStyle(lifeTrack).paddingRight || 0);
     };
 
+    /* Self-healing: re-measure from live layout so late image loads, font swaps
+       or mobile toolbar changes can never leave a stale distance behind. */
+    var syncLifeDist = function () {
+      var dist = Math.max(0, trackContentWidth() - lifePin.clientWidth);
+      var h = lifePin.offsetHeight + dist;
+      if (Math.abs(dist - lifeDist) > 1 || Math.abs(h - lifeHeight) > 1) {
+        lifeDist = dist;
+        lifeHeight = h;
+        life.style.height = h + 'px';
+      }
+    };
+
     var renderLife = function () {
       lifeRaf = null;
       var vw = window.innerWidth;
       if (lifePinned) {
+        syncLifeDist();
         var r = life.getBoundingClientRect();
         var p = lifeDist ? Math.min(Math.max(-r.top / lifeDist, 0), 1) : 0;
         var x = -p * lifeDist;
@@ -814,12 +834,16 @@
     var measureLife = function () {
       if (!lifePinned) { renderLife(); return; }
       life.classList.add('is-pinned');
-      lifeDist = Math.max(0, trackContentWidth() - lifePin.clientWidth);
-      life.style.height = (lifePin.offsetHeight + lifeDist) + 'px';
+      lifeHeight = 0;
       renderLife();
     };
 
     measureLife();
+    window.addEventListener('load', measureLife);
+    window.addEventListener('pageshow', function (e) { if (e.persisted) measureLife(); });
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(function () { kickLife(); }).observe(lifeTrack);
+    }
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(measureLife);
     var lifeResizeTimer;
     var lifeViewportWidth = window.innerWidth;
@@ -834,8 +858,9 @@
 
     if ('IntersectionObserver' in window) {
       new IntersectionObserver(function (entries) {
-        lifeNear = entries[0].isIntersecting;
-        if (lifeNear) kickLife();
+        lifeNear = entries[entries.length - 1].isIntersecting;
+        /* Always settle once on enter/leave so a fast flick can't strand the track mid-way. */
+        if (lifeNear) kickLife(); else renderLife();
       }, { rootMargin: '200px 0px' }).observe(life);
 
       var revealIO = new IntersectionObserver(function (entries) {

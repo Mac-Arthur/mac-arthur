@@ -1563,13 +1563,13 @@ button:focus-visible,
   aspect-ratio: var(--ar, 4 / 5);
   padding: 0;
   overflow: hidden;
-  border-radius: 6px;
-  background: #1c1c1a;
-  box-shadow: 0 40px 70px -40px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(255, 255, 255, 0.06);
+  border-radius: 3px;
+  background: var(--cream);   /* printed-photo border, same as the grad prints */
+  box-shadow: 0 40px 70px -40px rgba(0, 0, 0, 0.9), 0 16px 45px rgba(0, 0, 0, 0.35);
   cursor: zoom-in;
   transition: transform 700ms var(--ease-out), box-shadow 700ms var(--ease-out), clip-path 1.2s var(--ease-out);
 }
-.life-frame picture { position: absolute; inset: 0; }
+.life-frame picture { position: absolute; inset: 0.5rem; overflow: hidden; background: #1c1c1a; }
 .life-frame img {
   position: absolute;
   top: 0;
@@ -1584,7 +1584,7 @@ button:focus-visible,
 }
 
 @media (hover: hover) and (pointer: fine) {
-  .life-frame:hover { transform: translateY(-8px); box-shadow: 0 50px 80px -40px rgba(0, 0, 0, 0.95), 0 0 0 1px rgba(214, 242, 74, 0.5); }
+  .life-frame:hover { transform: translateY(-8px); box-shadow: 0 50px 80px -40px rgba(0, 0, 0, 0.95), 0 0 0 2px rgba(214, 242, 74, 0.6); }
   .life-frame:hover img { scale: 1.05; filter: saturate(1.06); }
 }
 .life-frame:focus-visible { outline: 2px solid var(--accent-lime); outline-offset: 4px; }
