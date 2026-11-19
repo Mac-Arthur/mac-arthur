@@ -32,7 +32,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="preload" as="image" href="assets/photos/dope3.JPG" fetchpriority="high" />
+  <link rel="preload" as="image" href="assets/hero/hero-bg.webp" fetchpriority="high" />
 
   <link rel="stylesheet" href="style.css" />
   <script>document.documentElement.classList.add('js');</script>
@@ -129,7 +129,7 @@
         <div class="hero-frame hero-frame--portrait">
           <div class="hero-reveal">
             <figure class="hero-portrait">
-              <img class="hero-bg hero-portrait-image" src="assets/photos/dope3.JPG" width="1170" height="2080" alt="" fetchpriority="high" decoding="sync" />
+              <img class="hero-bg hero-portrait-image" src="assets/hero/hero-bg.webp" width="1170" height="2080" alt="" fetchpriority="high" decoding="sync" />
               <figcaption><span>Guyman, in his element.</span><span>Accra, GH</span></figcaption>
             </figure>
           </div>
@@ -204,7 +204,7 @@
               <figcaption>BSc. '24 — got myself</figcaption>
             </figure>
             <figure class="polaroid" style="--r:-2deg; --x:0%; --y:0%">
-              <picture><img src="assets/hero/Hero.jpeg" width="3024" height="4032" alt="Mac-Arthur in a black tee and denim shorts, sitting on a wooden rail in a garden" loading="lazy" decoding="async" /></picture>
+              <picture><source type="image/avif" srcset="assets/life/fits-hero.avif" /><img src="assets/life/fits-hero.webp" width="1067" height="1423" alt="Mac-Arthur in a black tee and denim shorts, sitting on a wooden rail in a garden" loading="lazy" decoding="async" /></picture>
               <figcaption>off duty ✓</figcaption>
             </figure>
 
@@ -268,8 +268,8 @@
               <img src="assets/about/about-work.webp" width="1000" height="1250" alt="Studio portrait of Mac-Arthur, arms crossed, in a maroon button-up shirt" loading="lazy" decoding="async" />
             </picture>
             <picture class="about-shot about-shot--life">
-              <source type="image/avif" srcset="assets/photos/dope1.JPG" />
-              <img src="assets/photos/dope1.JPG" width="1000" height="1250" alt="Mac-Arthur in a Brooklyn cap, brown tee and denim shorts, sitting on a wooden rail in a sunny garden" loading="lazy" decoding="async" />
+              <source type="image/avif" srcset="assets/about/about-life.avif" />
+              <img src="assets/about/about-life.webp" width="1000" height="1250" alt="Mac-Arthur in a Brooklyn cap, brown tee and denim shorts, sitting on a wooden rail in a sunny garden" loading="lazy" decoding="async" />
             </picture>
             <p class="about-photo-tag" aria-hidden="true">mode: <b class="for-work">"work"</b><b class="for-life">"life"</b></p>
           </div>
@@ -376,13 +376,26 @@
               </figure>
             </li>
 
-            <li class="life-card" data-chapter="Fits" style="--ar: 3/4; --h: 1; --off: -3svh; --rot: -1.4deg">
+            <li class="life-card" data-chapter="Fits" style="--ar: 3/4; --h: 0.92; --off: 3svh; --rot: 1deg">
               <figure>
-                <button type="button" class="life-frame" data-lightbox aria-label="View photo: A quick stop, a good fit">
-                  <picture><img src="assets/photos/Standshot.jpeg" width="3024" height="4032" alt="Mac-Arthur in a camo shirt, denim shorts and trainers beside a white car at a roadside fruit stand" loading="lazy" decoding="async" /></picture>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: Garden calm, sharp kicks">
+                  <picture><source type="image/avif" srcset="assets/life/fits-hero.avif" /><img src="assets/life/fits-hero.webp" width="1067" height="1423" alt="Mac-Arthur in a cap, sunglasses, dark tee and denim shorts sitting on a wooden rail in a sunny garden" loading="lazy" decoding="async" /></picture>
                 </button>
                 <figcaption>
                   <span class="life-chapter">02 · Fits</span>
+                  <span class="life-caption">Garden calm, sharp kicks.</span>
+                  <span class="life-exif">Jun 2025</span>
+                </figcaption>
+              </figure>
+            </li>
+
+            <li class="life-card" data-chapter="Fits" style="--ar: 3/4; --h: 1; --off: -3svh; --rot: -1.4deg">
+              <figure>
+                <button type="button" class="life-frame" data-lightbox aria-label="View photo: A quick stop, a good fit">
+                  <picture><source type="image/avif" srcset="assets/life/fits-stand.avif" /><img src="assets/life/fits-stand.webp" width="1066" height="1422" alt="Mac-Arthur in a camo shirt, denim shorts and trainers beside a white car at a roadside fruit stand" loading="lazy" decoding="async" /></picture>
+                </button>
+                <figcaption>
+                  <span class="life-chapter">03 · Fits</span>
                   <span class="life-caption">A quick stop, a good fit.</span>
                   <span class="life-exif"></span>
                 </figcaption>
@@ -395,7 +408,7 @@
                   <picture><source type="image/avif" srcset="assets/life/fits-corridor.avif" /><img src="assets/life/fits-corridor.webp" width="1067" height="1600" alt="Mac-Arthur in an RDM jersey, white jeans and sunglasses standing in a narrow lit corridor" loading="lazy" decoding="async" /></picture>
                 </button>
                 <figcaption>
-                  <span class="life-chapter">03 · Fits</span>
+                  <span class="life-chapter">04 · Fits</span>
                   <span class="life-caption">Every corridor is a runway.</span>
                   <span class="life-exif">May 2024</span>
                 </figcaption>
@@ -416,7 +429,7 @@
                   <picture><source type="image/avif" srcset="assets/life/functions-neon.avif" /><img src="assets/life/functions-neon.webp" width="1086" height="1358" alt="Mac-Arthur and a friend at a party lit in pink and green neon" loading="lazy" decoding="async" /></picture>
                 </button>
                 <figcaption>
-                  <span class="life-chapter">04 · Functions</span>
+                  <span class="life-chapter">05 · Functions</span>
                   <span class="life-caption">Where the code reviews can't reach.</span>
                   <span class="life-exif"></span>
                 </figcaption>
@@ -429,7 +442,7 @@
                   <picture><source type="image/avif" srcset="assets/life/functions-dayones.avif" /><img src="assets/life/functions-dayones.webp" width="1086" height="1358" alt="Mac-Arthur in a vintage cap and sunglasses shaking hands with a friend against a dark backdrop with blue neon" loading="lazy" decoding="async" /></picture>
                 </button>
                 <figcaption>
-                  <span class="life-chapter">05 · Functions</span>
+                  <span class="life-chapter">06 · Functions</span>
                   <span class="life-caption">Day ones, night shifts.</span>
                   <span class="life-exif"></span>
                 </figcaption>
@@ -442,7 +455,7 @@
                   <picture><source type="image/avif" srcset="assets/life/escapes-coast.avif" /><img src="assets/life/escapes-coast.webp" width="1162" height="1550" alt="Mac-Arthur and a friend standing arms crossed on a beach lined with palm trees and thatched huts" loading="lazy" decoding="async" /></picture>
                 </button>
                 <figcaption>
-                  <span class="life-chapter">06 · Escapes</span>
+                  <span class="life-chapter">07 · Escapes</span>
                   <span class="life-caption">New year, new coastline.</span>
                   <span class="life-exif">Jan 2026</span>
                 </figcaption>
@@ -467,7 +480,7 @@
                   <picture><source type="image/avif" srcset="assets/life/milestone-kente.avif" /><img src="assets/life/milestone-kente.webp" width="1067" height="1600" alt="Mac-Arthur adjusting his sunglasses, wearing a kente graduation stole that reads Adey get myself, BSc Computer Engineering 2024" loading="lazy" decoding="async" /></picture>
                 </button>
                 <figcaption>
-                  <span class="life-chapter">07 · Milestones</span>
+                  <span class="life-chapter">08 · Milestones</span>
                   <span class="life-caption">“Adey get myself.” BSc Computer Engineering.</span>
                   <span class="life-exif">Feb 2025</span>
                 </figcaption>
@@ -480,7 +493,7 @@
                   <picture><source type="image/avif" srcset="assets/life/milestone-sunset.avif" /><img src="assets/life/milestone-sunset.webp" width="1280" height="1600" alt="Mac-Arthur and a classmate in suits and kente stoles posing at sunset" loading="lazy" decoding="async" /></picture>
                 </button>
                 <figcaption>
-                  <span class="life-chapter">08 · Milestones</span>
+                  <span class="life-chapter">09 · Milestones</span>
                   <span class="life-caption">Golden hour with the class of ’24.</span>
                   <span class="life-exif">Feb 2025</span>
                 </figcaption>
@@ -493,7 +506,7 @@
                   <picture><source type="image/avif" srcset="assets/life/milestone-award.avif" /><img src="assets/life/milestone-award.webp" width="1200" height="1600" alt="Mac-Arthur in a blue suit and sunglasses holding up an award trophy in front of a sponsor backdrop" loading="lazy" decoding="async" /></picture>
                 </button>
                 <figcaption>
-                  <span class="life-chapter">09 · Milestones</span>
+                  <span class="life-chapter">10 · Milestones</span>
                   <span class="life-caption">Brought the trophy home.</span>
                   <span class="life-exif">Aug 2024</span>
                 </figcaption>
@@ -506,7 +519,7 @@
                   <picture><source type="image/avif" srcset="assets/life/people-squad.avif" /><img src="assets/life/people-squad.webp" width="1200" height="1600" alt="Selfie of Mac-Arthur and friends throwing peace signs on campus" loading="lazy" decoding="async" /></picture>
                 </button>
                 <figcaption>
-                  <span class="life-chapter">10 · People</span>
+                  <span class="life-chapter">11 · People</span>
                   <span class="life-caption">The people are the point.</span>
                   <span class="life-exif">Jun 2024</span>
                 </figcaption>
@@ -851,21 +864,21 @@
           <div class="grad-gallery grad-gallery--album reveal" data-reveal="fade-up" data-gallery-title="Legon graduation">
             <span class="grad-year" aria-hidden="true">’24</span>
             <figure class="grad-print grad-print--main">
-              <a href="assets/photos/grad2.JPEG" data-grad-photo="0" target="_blank" rel="noopener" aria-label="Enlarge university of ghana, photo 1">
+              <a href="assets/education/grad2.webp" data-grad-photo="0" target="_blank" rel="noopener" aria-label="Enlarge university of ghana, photo 1">
                 <img src="assets/education/grad2.webp" alt="Mac-Arthur in a suit and University of Ghana graduation stole, adjusting his sunglasses" width="1200" height="1800" loading="lazy" decoding="async" />
                 <span class="grad-expand" aria-hidden="true">↗</span>
               </a>
               <figcaption><span>University of Ghana</span><span>01 / 03</span></figcaption>
             </figure>
             <figure class="grad-print grad-print--detail">
-              <a href="assets/photos/grad4.JPEG" data-grad-photo="1" target="_blank" rel="noopener" aria-label="Enlarge class of ’24, photo 2">
+              <a href="assets/education/grad4.webp" data-grad-photo="1" target="_blank" rel="noopener" aria-label="Enlarge class of ’24, photo 2">
                 <img src="assets/education/grad4.webp" alt="Full-length graduation portrait of Mac-Arthur wearing a suit and University of Ghana stole" width="1107" height="1800" loading="lazy" decoding="async" />
                 <span class="grad-expand" aria-hidden="true">↗</span>
               </a>
               <figcaption><span>Class of ’24</span><span>02 / 03</span></figcaption>
             </figure>
             <figure class="grad-print grad-print--extra">
-              <a href="assets/photos/grad5.JPEG" data-grad-photo="2" target="_blank" rel="noopener" aria-label="Enlarge legon memories, photo 3">
+              <a href="assets/education/grad5.webp" data-grad-photo="2" target="_blank" rel="noopener" aria-label="Enlarge legon memories, photo 3">
                 <img src="assets/education/grad5.webp" alt="Mac-Arthur in graduation robes beside a guest in a yellow dress, in front of the University of Ghana tower" width="1200" height="1800" loading="lazy" decoding="async" />
                 <span class="grad-expand" aria-hidden="true">↗</span>
               </a>
@@ -910,21 +923,21 @@
           <div class="grad-gallery grad-gallery--school reveal" data-reveal="fade-up" data-gallery-title="The Augusco days">
             <span class="grad-year" aria-hidden="true">’20</span>
             <figure class="grad-print grad-print--main">
-              <a href="assets/photos/augusco1.jpg" data-grad-photo="0" target="_blank" rel="noopener" aria-label="Enlarge augusco days, photo 1">
+              <a href="assets/education/augusco1.webp" data-grad-photo="0" target="_blank" rel="noopener" aria-label="Enlarge augusco days, photo 1">
                 <img src="assets/education/augusco1.webp" alt="Three students in green-and-white Saint Augustine’s College shirts on a palm-lined campus path" width="1206" height="1371" loading="lazy" decoding="async" />
                 <span class="grad-expand" aria-hidden="true">↗</span>
               </a>
               <figcaption><span>Augusco days</span><span>01 / 03</span></figcaption>
             </figure>
             <figure class="grad-print grad-print--detail">
-              <a href="assets/photos/augusco2.jpg" data-grad-photo="1" target="_blank" rel="noopener" aria-label="Enlarge cape coast, photo 2">
+              <a href="assets/education/augusco2.webp" data-grad-photo="1" target="_blank" rel="noopener" aria-label="Enlarge cape coast, photo 2">
                 <img src="assets/education/augusco2.webp" alt="Three Saint Augustine’s College students standing together beneath the campus palm trees" width="1206" height="1461" loading="lazy" decoding="async" />
                 <span class="grad-expand" aria-hidden="true">↗</span>
               </a>
               <figcaption><span>Cape Coast</span><span>02 / 03</span></figcaption>
             </figure>
             <figure class="grad-print grad-print--small">
-              <a href="assets/photos/augusco3.jpg" data-grad-photo="2" target="_blank" rel="noopener" aria-label="Enlarge from the album, photo 3">
+              <a href="assets/education/augusco3.webp" data-grad-photo="2" target="_blank" rel="noopener" aria-label="Enlarge from the album, photo 3">
                 <img src="assets/education/augusco3.webp" alt="Two students in green-and-white school shirts sitting together near a school building" width="1206" height="1069" loading="lazy" decoding="async" />
                 <span class="grad-expand" aria-hidden="true">↗</span>
               </a>
