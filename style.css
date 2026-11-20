@@ -2696,6 +2696,7 @@ html:not(.js) .experience .reveal { opacity: 1; transform: none; }
 .window-bar i { width: 4px; height: 4px; border-radius: 50%; background: #9ca789; }
 .window-bar span { margin: auto; font: 0.5rem var(--font-mono); color: #677056; }
 .web-canvas { padding: 1.25rem; }
+.web-shot { display: block; width: 100%; height: auto; }
 .web-canvas > span { font: 0.5rem var(--font-mono); letter-spacing: 0.12em; }
 .web-canvas b { display: block; font: 500 2rem/1 var(--font-display); letter-spacing: -0.05em; margin-top: 0.8rem; }
 .web-canvas em { font-family: var(--font-serif); font-weight: 400; }
@@ -3119,3 +3120,8 @@ html:not(.js) .section--contact .reveal { opacity: 1; transform: none; }
   }
   .reveal { opacity: 1; transform: none; }
 }
+
+/* PAPSS: official payment-flow diagram on a light card. */
+.sketch-payments:has(.papss-preview) { background: #f4f3f4; background-image: none; color: var(--ink); padding: 3.5rem 1.5rem; }
+.papss-preview { width: min(100%, 520px); margin: auto; border-radius: 6px; overflow: hidden; box-shadow: 0 12px 25px #2a104a20; }
+.papss-preview img { width: 100%; height: auto; display: block; }
